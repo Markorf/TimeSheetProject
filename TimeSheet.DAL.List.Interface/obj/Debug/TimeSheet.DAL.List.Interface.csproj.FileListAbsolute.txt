@@ -1,0 +1,4 @@
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheet.DAL.List.Interface\bin\Debug\TimeSheet.DAL.List.Interface.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheet.DAL.List.Interface\bin\Debug\TimeSheet.DAL.List.Interface.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheet.DAL.List.Interface\obj\Debug\TimeSheet.DAL.List.Interface.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheet.DAL.List.Interface\obj\Debug\TimeSheet.DAL.List.Interface.pdb

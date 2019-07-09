@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F7C83B4B-4027-4C83-ADE0-A08E504A78C9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConsoleApp1</RootNamespace>
+    <AssemblyName>ConsoleApp1</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="TimeSheetApp.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TimeSheet.DAL.List.Interface\TimeSheet.DAL.Repositories.List.Interfaces.csproj">
+      <Project>{E74C2B57-DC29-4D22-B89C-107ECD30ABEF}</Project>
+      <Name>TimeSheet.DAL.Repositories.List.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSheet.DAL.Repositories.Database.Implementation\TimeSheet.DAL.Repositories.Database.Implementation.csproj">
+      <Project>{0e32156e-26f9-478b-807c-ccdd06b76894}</Project>
+      <Name>TimeSheet.DAL.Repositories.Database.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSheetDAL\TimeSheet.DAL.Repositories.List.Implementation.csproj">
+      <Project>{17c2b036-969f-4e13-97fe-2c70d083ea7c}</Project>
+      <Name>TimeSheet.DAL.Repositories.List.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSheetLib\TimeSheet.Shared.Models.Implementation.csproj">
+      <Project>{e6e99b2f-430a-4f64-88bf-66bb33a1c49e}</Project>
+      <Name>TimeSheet.Shared.Models.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="TimeSheet.DAL.Repositories.Database.Interfaces\TimeSheet.DAL.Repositories.Database.Interfaces.csproj">
+      <Project>{66ba0721-28f4-44eb-9f00-81336c36827e}</Project>
+      <Name>TimeSheet.DAL.Repositories.Database.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="TimeSheet.LIB.Interface\TimeSheet.Shared.Models.Interfaces.csproj">
+      <Project>{b7697020-350e-4659-b483-01bb93c977b1}</Project>
+      <Name>TimeSheet.Shared.Models.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="TimeSheet.Logic.List.Interface\TimeSheet.BLL.Service.Interfaces.csproj">
+      <Project>{c972fe50-0407-485d-8250-c6ff8d9ae4b9}</Project>
+      <Name>TimeSheet.BLL.Service.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="TimeSheetLogic\TimeSheet.BLL.Service.Implementation.csproj">
+      <Project>{4567bf47-31f5-4b20-ba4d-b1f5aceed204}</Project>
+      <Name>TimeSheet.BLL.Service.Implementation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

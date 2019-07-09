@@ -1,0 +1,9 @@
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.Logic.List.Interface\bin\Debug\TimeSheet.Logic.List.Interface.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.Logic.List.Interface\bin\Debug\TimeSheet.Logic.List.Interface.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.Logic.List.Interface\bin\Debug\TimeSheet.DAL.List.Interface.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.Logic.List.Interface\bin\Debug\TimeSheet.LIB.Interface.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.Logic.List.Interface\bin\Debug\TimeSheet.DAL.List.Interface.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.Logic.List.Interface\bin\Debug\TimeSheet.LIB.Interface.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.Logic.List.Interface\obj\Debug\TimeSheet.BLL.Service.Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.Logic.List.Interface\obj\Debug\TimeSheet.Logic.List.Interface.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.Logic.List.Interface\obj\Debug\TimeSheet.Logic.List.Interface.pdb

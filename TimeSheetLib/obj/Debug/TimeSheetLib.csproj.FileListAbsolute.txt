@@ -1,0 +1,5 @@
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\bin\Debug\TimeSheetLib.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\bin\Debug\TimeSheetLib.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\obj\Debug\TimeSheetLib.csprojResolveAssemblyReference.cache
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\obj\Debug\TimeSheetLib.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\obj\Debug\TimeSheetLib.pdb

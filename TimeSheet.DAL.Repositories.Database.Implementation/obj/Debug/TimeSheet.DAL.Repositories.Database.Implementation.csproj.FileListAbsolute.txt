@@ -1,0 +1,7 @@
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\bin\Debug\TimeSheet.DAL.Repositories.Database.Implementation.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\bin\Debug\TimeSheet.DAL.Repositories.Database.Implementation.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\obj\Debug\TimeSheet.DAL.Repositories.Database.Implementation.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\obj\Debug\TimeSheet.DAL.Repositories.Database.Implementation.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\obj\Debug\TimeSheet.DAL.Repositories.Database.Implementation.csprojResolveAssemblyReference.cache

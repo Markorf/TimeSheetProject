@@ -1,0 +1,5 @@
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.LIB.Interface\bin\Debug\TimeSheet.LIB.Interface.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.LIB.Interface\bin\Debug\TimeSheet.LIB.Interface.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.LIB.Interface\obj\Debug\TimeSheet.Shared.Models.Interfaces.csprojResolveAssemblyReference.cache
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.LIB.Interface\obj\Debug\TimeSheet.LIB.Interface.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.LIB.Interface\obj\Debug\TimeSheet.LIB.Interface.pdb

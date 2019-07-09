@@ -1,0 +1,7 @@
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetDAL\bin\Debug\TimeSheetDAL.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetDAL\bin\Debug\TimeSheetDAL.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetDAL\bin\Debug\TimeSheetLib.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetDAL\bin\Debug\TimeSheetLib.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetDAL\obj\Debug\TimeSheet.DAL.List.Implementation.csprojResolveAssemblyReference.cache
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetDAL\obj\Debug\TimeSheetDAL.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetDAL\obj\Debug\TimeSheetDAL.pdb
