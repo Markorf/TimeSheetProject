@@ -14,12 +14,13 @@ namespace TimeSheetApp
     {
         static void Main(string[] args)
         {
-            ICountryService countryService = new CountryService(new CountryDAL(new DBService(null)));
-            IClientService clientService = new ClientService(new ClientDAL(null));
+            ICountryService countryService = new CountryService(new CountryDAL(new DBService("ConsoleApp1.Properties.Settings.TimeSheetConnection")));
+            IClientService clientService = new ClientService(new ClientDAL(new DBService("ConsoleApp1.Properties.Settings.TimeSheetConnection")));
             IEnumerable<ICountry> countryList = countryService.GetCountries();
             IEnumerable<IClient> clientList = clientService.GetClients();
             Guid id = clientList.First().Id;
             clientService.UpdateClientById(new Client("Boza") { Id = id });
+            Console.WriteLine(clientList.First().Name);
         }
     }
 }

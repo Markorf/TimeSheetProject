@@ -30,7 +30,7 @@ namespace TimeSheet.DAL.Repositories.List.Implementation
                 connection.Open();
                 using (DbDataAdapter dbDataAdapter = _DbService.CreateDbDataAdapter())
                 {
-                    (dbDataAdapter as IDbDataAdapter).SelectCommand = connection.CreateCommand("SELECT * FROM County;");
+                    (dbDataAdapter as IDbDataAdapter).SelectCommand = connection.CreateCommand("SELECT * FROM Country;");
                     dbDataAdapter.Fill(ds);
                 }
             }
