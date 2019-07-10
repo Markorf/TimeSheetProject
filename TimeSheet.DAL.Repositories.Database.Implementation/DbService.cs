@@ -1,44 +1,28 @@
 ﻿using System;
-using System.Data;
-using System.Configuration;
-using System.Data.Common;
-using TimeSheet.DAL.Repositories.Database.Interfaces;
+using System.Data.SqlClient;
+using TimeSheet.DAL.Repositories.DbService.Interfaces;
 
-namespace TimeSheet.DAL.Repositories.Database.Implementation
+namespace TimeSheet.DAL.Repositories.DbService.Implementation
 {
     public class DBService : IDbService
     {
-        private string _ConnectionString;
-        private DbProviderFactory _DBFactory;
+        public IDbConnectionService DbConnectionService { get; set; }
 
-        public DBService(string connectionString)
+        public DBService(IDbConnectionService dbConnectionService)
         {
-            if (String.IsNullOrEmpty(connectionString))
+            if (dbConnectionService == null)
             {
-                throw new ArgumentException("Value cannot be null or empty string", nameof(connectionString));
+                throw new ArgumentNullException("Value cannot be null", nameof(dbConnectionService));
             }
-            _ConnectionString = connectionString;
-            _DBFactory = DbProviderFactories.GetFactory(GetConnectionSettings().ProviderName);
 
+            DbConnectionService = dbConnectionService;
         }
 
-        public DbConnection CreateDbConnection()
+        public SqlConnection CreateDbConnection()
         {
-            DbConnection connection = _DBFactory.CreateConnection();
-            connection.ConnectionString = GetConnectionSettings().ConnectionString;
+            SqlConnection connection = new SqlConnection(DbConnectionService.GetConnectionSettings().ConnectionString);
             return connection;
         }
 
-        public DbDataAdapter CreateDbDataAdapter()
-                => _DBFactory.CreateDataAdapter();
-
-        public ConnectionStringSettings GetConnectionSettings()
-        {
-            if (ConfigurationManager.ConnectionStrings[_ConnectionString] == null)
-            {
-                throw new ConfigurationErrorsException("Provide valid connection string");
-            }
-            return ConfigurationManager.ConnectionStrings[_ConnectionString];
-        }
     }
 }

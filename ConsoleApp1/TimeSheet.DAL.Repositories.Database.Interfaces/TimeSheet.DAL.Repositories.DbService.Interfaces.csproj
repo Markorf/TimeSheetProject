@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDbConnectionService.cs" />
     <Compile Include="IDbService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

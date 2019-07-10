@@ -12,7 +12,7 @@ namespace TimeSheet.Shared.Models.Implementation
         public string ZipCode { get; set; }
         public Guid? CountryId { get; set; }
 
-        public Client(string name, Guid? countryId = null, string address = null, string city = null, string zipCode = null)
+        public Client(string name, string address = null, string city = null, string zipCode = null, Guid? countryId = null)
         {
             if (String.IsNullOrEmpty(name))
             {
@@ -25,6 +25,6 @@ namespace TimeSheet.Shared.Models.Implementation
             City = city;
             ZipCode = zipCode;
         }
-       
+
     }
 }

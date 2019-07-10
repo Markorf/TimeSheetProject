@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using TimeSheet.DAL.Repositories.List.Interfaces;
+using TimeSheet.DAL.Repositories.Repository.Interfaces;
 using TimeSheet.Shared.Models.Interfaces;
 using TimeSheet.Shared.Models.Implementation;
-using TimeSheet.DAL.Repositories.Database.Interfaces;
-using System.Data;
+using TimeSheet.DAL.Repositories.DbService.Interfaces;
+using System.Data.SqlClient;
 
-namespace TimeSheet.DAL.Repositories.List.Implementation
+namespace TimeSheet.DAL.Repositories.Repository.Implementation
 {
     public class CountryDAL : ICountryDAL
     {
@@ -24,20 +23,19 @@ namespace TimeSheet.DAL.Repositories.List.Implementation
 
         public IEnumerable<ICountry> GetCountries()
         {
-            DataSet ds = new DataSet("Country");
-            using (DbConnection connection = _DbService.CreateDbConnection())
+            List<ICountry> countryList = new List<ICountry>();
+            using (SqlConnection connection = _DbService.CreateDbConnection())
             {
                 connection.Open();
-                using (DbDataAdapter dbDataAdapter = _DbService.CreateDbDataAdapter())
+
+                SqlCommand command = new SqlCommand("SELECT * FROM Country;", connection);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    (dbDataAdapter as IDbDataAdapter).SelectCommand = connection.CreateCommand("SELECT * FROM Country;");
-                    dbDataAdapter.Fill(ds);
+                    countryList.Add(new Country(reader.GetString(1)));
                 }
             }
-            return ds.Tables[0].AsEnumerable().Select(row => MapRowToCountry(row));
+            return countryList;
         }
-
-        private ICountry MapRowToCountry(DataRow row)
-            => new Country(row.Field<string>("Name"));
     }
 }

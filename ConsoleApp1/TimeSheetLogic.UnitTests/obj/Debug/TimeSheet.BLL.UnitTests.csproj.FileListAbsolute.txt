@@ -28,3 +28,5 @@ C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic
 C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic.UnitTests\bin\Debug\Castle.Core.xml
 C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic.UnitTests\bin\Debug\NSubstitute.xml
 C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic.UnitTests\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic.UnitTests\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic.UnitTests\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.pdb

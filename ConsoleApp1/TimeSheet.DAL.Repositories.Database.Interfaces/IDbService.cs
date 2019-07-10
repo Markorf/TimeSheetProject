@@ -1,14 +1,11 @@
 ﻿using System.Data;
-using System.Data.Common;
-using System.Configuration;
 using System.Data.SqlClient;
 
-namespace TimeSheet.DAL.Repositories.Database.Interfaces
+namespace TimeSheet.DAL.Repositories.DbService.Interfaces
 {
     public interface IDbService
     {
-        DbConnection CreateDbConnection();
-        DbDataAdapter CreateDbDataAdapter();
-        ConnectionStringSettings GetConnectionSettings();
+        IDbConnectionService DbConnectionService { get; set; }
+        SqlConnection CreateDbConnection();
     }
 }

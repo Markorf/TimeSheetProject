@@ -67,13 +67,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TimeSheet.DAL.List.Interface\TimeSheet.DAL.Repositories.List.Interfaces.csproj">
+    <ProjectReference Include="..\..\TimeSheet.DAL.List.Interface\TimeSheet.DAL.Repositories.Repository.Interfaces.csproj">
       <Project>{e74c2b57-dc29-4d22-b89c-107ecd30abef}</Project>
-      <Name>TimeSheet.DAL.Repositories.List.Interfaces</Name>
+      <Name>TimeSheet.DAL.Repositories.Repository.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TimeSheetDAL\TimeSheet.DAL.Repositories.List.Implementation.csproj">
+    <ProjectReference Include="..\..\TimeSheetDAL\TimeSheet.DAL.Repositories.Repository.Implementation.csproj">
       <Project>{17c2b036-969f-4e13-97fe-2c70d083ea7c}</Project>
-      <Name>TimeSheet.DAL.Repositories.List.Implementation</Name>
+      <Name>TimeSheet.DAL.Repositories.Repository.Implementation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\TimeSheetLib\TimeSheet.Shared.Models.Implementation.csproj">
       <Project>{E6E99B2F-430A-4F64-88BF-66BB33A1C49E}</Project>

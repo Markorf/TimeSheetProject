@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.Entity.Design" />
@@ -61,25 +62,25 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TimeSheet.DAL.List.Interface\TimeSheet.DAL.Repositories.List.Interfaces.csproj">
+    <ProjectReference Include="..\TimeSheet.DAL.List.Interface\TimeSheet.DAL.Repositories.Repository.Interfaces.csproj">
       <Project>{E74C2B57-DC29-4D22-B89C-107ECD30ABEF}</Project>
-      <Name>TimeSheet.DAL.Repositories.List.Interfaces</Name>
+      <Name>TimeSheet.DAL.Repositories.Repository.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TimeSheet.DAL.Repositories.Database.Implementation\TimeSheet.DAL.Repositories.Database.Implementation.csproj">
+    <ProjectReference Include="..\TimeSheet.DAL.Repositories.Database.Implementation\TimeSheet.DAL.Repositories.DbService.Implementation.csproj">
       <Project>{0e32156e-26f9-478b-807c-ccdd06b76894}</Project>
-      <Name>TimeSheet.DAL.Repositories.Database.Implementation</Name>
+      <Name>TimeSheet.DAL.Repositories.DbService.Implementation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TimeSheetDAL\TimeSheet.DAL.Repositories.List.Implementation.csproj">
+    <ProjectReference Include="..\TimeSheetDAL\TimeSheet.DAL.Repositories.Repository.Implementation.csproj">
       <Project>{17c2b036-969f-4e13-97fe-2c70d083ea7c}</Project>
-      <Name>TimeSheet.DAL.Repositories.List.Implementation</Name>
+      <Name>TimeSheet.DAL.Repositories.Repository.Implementation</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimeSheetLib\TimeSheet.Shared.Models.Implementation.csproj">
       <Project>{e6e99b2f-430a-4f64-88bf-66bb33a1c49e}</Project>
       <Name>TimeSheet.Shared.Models.Implementation</Name>
     </ProjectReference>
-    <ProjectReference Include="TimeSheet.DAL.Repositories.Database.Interfaces\TimeSheet.DAL.Repositories.Database.Interfaces.csproj">
+    <ProjectReference Include="TimeSheet.DAL.Repositories.Database.Interfaces\TimeSheet.DAL.Repositories.DbService.Interfaces.csproj">
       <Project>{66ba0721-28f4-44eb-9f00-81336c36827e}</Project>
-      <Name>TimeSheet.DAL.Repositories.Database.Interfaces</Name>
+      <Name>TimeSheet.DAL.Repositories.DbService.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="TimeSheet.LIB.Interface\TimeSheet.Shared.Models.Interfaces.csproj">
       <Project>{b7697020-350e-4659-b483-01bb93c977b1}</Project>

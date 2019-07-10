@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TimeSheet.DAL.List.Interface\TimeSheet.DAL.Repositories.List.Interfaces.csproj">
+    <ProjectReference Include="..\..\TimeSheet.DAL.List.Interface\TimeSheet.DAL.Repositories.Repository.Interfaces.csproj">
       <Project>{e74c2b57-dc29-4d22-b89c-107ecd30abef}</Project>
-      <Name>TimeSheet.DAL.Repositories.List.Interfaces</Name>
+      <Name>TimeSheet.DAL.Repositories.Repository.Interfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\TimeSheet.LIB.Interface\TimeSheet.Shared.Models.Interfaces.csproj">
       <Project>{b7697020-350e-4659-b483-01bb93c977b1}</Project>

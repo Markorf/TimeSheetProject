@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using TimeSheet.Shared.Models.Interfaces;
 using TimeSheet.BLL.Service.Interfaces;
-using TimeSheet.DAL.Repositories.List.Interfaces;
+using TimeSheet.DAL.Repositories.Repository.Interfaces;
 
 namespace TimeSheet.BLL.Service.Implementation
 {

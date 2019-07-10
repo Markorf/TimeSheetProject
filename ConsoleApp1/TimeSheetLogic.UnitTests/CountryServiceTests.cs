@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NSubstitute;
 using TimeSheet.Shared.Models.Interfaces;
-using TimeSheet.DAL.Repositories.List.Interfaces;
+using TimeSheet.DAL.Repositories.Repository.Interfaces;
 using TimeSheet.BLL.Service.Implementation;
 using TimeSheet.Shared.Models.Implementation;
 

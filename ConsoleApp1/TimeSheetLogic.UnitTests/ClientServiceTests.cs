@@ -5,7 +5,7 @@ using System.Linq;
 using TimeSheet.Shared.Models.Implementation;
 using TimeSheet.Shared.Models.Interfaces;
 using TimeSheet.BLL.Service.Implementation;
-using TimeSheet.DAL.Repositories.List.Interfaces;
+using TimeSheet.DAL.Repositories.Repository.Interfaces;
 using NSubstitute;
 
 namespace TimeSheetLogic.UnitTests
@@ -15,6 +15,7 @@ namespace TimeSheetLogic.UnitTests
     {
         IClientDAL _clientDAL;
         List<IClient> _clientList;
+
         [TestInitialize]
         public void TestInitialize()
         {
@@ -44,7 +45,7 @@ namespace TimeSheetLogic.UnitTests
             _clientDAL.GetClients().Returns(_clientList);
             ClientService clientService = new ClientService(_clientDAL);
             // Act
-            List<IClient> clientList = clientService.GetClients();
+            IEnumerable<IClient> clientList = clientService.GetClients();
             int listCount = clientList.Count();
             // Assert
             Assert.IsTrue(clientList.Count() == clientList.Count());
@@ -57,7 +58,7 @@ namespace TimeSheetLogic.UnitTests
             _clientDAL.GetClients().Returns(new List<IClient>() { });
             ClientService clientService = new ClientService(_clientDAL);
             // Act
-            List<IClient> clientList = clientService.GetClients();
+            IEnumerable<IClient> clientList = clientService.GetClients();
             // Assert
             Assert.IsTrue(clientList.Count() == 0);
         }
@@ -67,7 +68,7 @@ namespace TimeSheetLogic.UnitTests
         {
             // Arrange
             ClientService clientService = new ClientService(_clientDAL);
-            Client clientToAdd = new Client("Max", null, "Addr", "CITY", "2222");
+            Client clientToAdd = new Client("Max", null, "Addr", "CITY", null);
             // Act
             clientService.AddClient(clientToAdd);
             // Assert
@@ -97,7 +98,7 @@ namespace TimeSheetLogic.UnitTests
             // Arrange
             _clientDAL.GetClients().Returns(_clientList);
             ClientService clientService = new ClientService(_clientDAL);
-            List<IClient> clientList = clientService.GetClients();
+            List<IClient> clientList = clientService.GetClients().ToList();
             Guid clientId = clientList[0].Id;
             _clientDAL.RemoveClientById(clientId).Returns(true);
             // Act
@@ -115,10 +116,9 @@ namespace TimeSheetLogic.UnitTests
             // Arrange
             _clientDAL.GetClients().Returns(_clientList);
             ClientService clientService = new ClientService(_clientDAL);
-            // Act
-
             Guid clientId = Guid.NewGuid();
             _clientDAL.RemoveClientById(clientId).Returns(false);
+            // Act
             bool isClientRemoved = clientService.RemoveClientById(clientId);
             // Assert
 
@@ -175,7 +175,7 @@ namespace TimeSheetLogic.UnitTests
             _clientDAL.GetClients().Returns(_clientList);
             // Arrange
             ClientService clientService = new ClientService(_clientDAL);
-            List<IClient> clientList = clientService.GetClients();
+            IEnumerable<IClient> clientList = clientService.GetClients();
 
             // Act
             IEnumerable<IClient> filteredClients = clientService.FilterClientsByName(searchText);
@@ -191,7 +191,7 @@ namespace TimeSheetLogic.UnitTests
             // Arrange
             string clientName = "Maxx";
             ClientService clientService = new ClientService(_clientDAL);
-            IClient newClient = new Client(clientName, null, "Addr", "City", "2231") { Id = _clientList.First().Id };
+            IClient newClient = new Client(clientName, null, "Addr", "City", Guid.NewGuid()) { Id = _clientList.First().Id };
 
             // Act
             clientService.UpdateClientById(newClient);
@@ -221,7 +221,7 @@ namespace TimeSheetLogic.UnitTests
             // Arrange
             _clientDAL.GetClients().Returns(_clientList);
             ClientService clientService = new ClientService(_clientDAL);
-            List<IClient> clientList = clientService.GetClients();
+            IEnumerable<IClient> clientList = clientService.GetClients();
             char firstLetter = 'M';
             _clientDAL.FilterClientsByFirstLetter(firstLetter).Returns(new List<IClient>() { new Client("Marko"), new Client("Max") });
 

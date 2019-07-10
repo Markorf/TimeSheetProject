@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0E32156E-26F9-478B-807C-CCDD06B76894}</ProjectGuid>
+    <ProjectGuid>{17C2B036-969F-4E13-97FE-2C70D083EA7C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TimeSheet.DAL.Repositories.Database.Implementation</RootNamespace>
-    <AssemblyName>TimeSheet.DAL.Repositories.Database.Implementation</AssemblyName>
+    <RootNamespace>TimeSheetDAL</RootNamespace>
+    <AssemblyName>TimeSheetDAL</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,13 +41,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbService.cs" />
+    <Compile Include="ClientDAL.cs" />
+    <Compile Include="CountryDAL.cs" />
+    <Compile Include="ExtensionMethods\IDBConnectionExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\TimeSheet.DAL.Repositories.Database.Interfaces.csproj">
+    <ProjectReference Include="..\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\TimeSheet.DAL.Repositories.DbService.Interfaces.csproj">
       <Project>{66ba0721-28f4-44eb-9f00-81336c36827e}</Project>
-      <Name>TimeSheet.DAL.Repositories.Database.Interfaces</Name>
+      <Name>TimeSheet.DAL.Repositories.DbService.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleApp1\TimeSheet.LIB.Interface\TimeSheet.Shared.Models.Interfaces.csproj">
+      <Project>{b7697020-350e-4659-b483-01bb93c977b1}</Project>
+      <Name>TimeSheet.Shared.Models.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSheet.DAL.List.Interface\TimeSheet.DAL.Repositories.Repository.Interfaces.csproj">
+      <Project>{e74c2b57-dc29-4d22-b89c-107ecd30abef}</Project>
+      <Name>TimeSheet.DAL.Repositories.Repository.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSheet.DAL.Repositories.Database.Implementation\TimeSheet.DAL.Repositories.DbService.Implementation.csproj">
+      <Project>{0e32156e-26f9-478b-807c-ccdd06b76894}</Project>
+      <Name>TimeSheet.DAL.Repositories.DbService.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSheetLib\TimeSheet.Shared.Models.Implementation.csproj">
+      <Project>{e6e99b2f-430a-4f64-88bf-66bb33a1c49e}</Project>
+      <Name>TimeSheet.Shared.Models.Implementation</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

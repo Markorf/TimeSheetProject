@@ -26,7 +26,7 @@ namespace ConsoleApp1.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=(localdb)\\MSSQLLocalDB;Database=TimeSheetDB;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data source=.; Database = TimeSheetDB; Integrated security=SSPI")]
         public string TimeSheetConnection {
             get {
                 return ((string)(this["TimeSheetConnection"]));
