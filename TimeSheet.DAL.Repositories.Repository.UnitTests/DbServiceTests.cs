@@ -11,15 +11,16 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
     [TestClass]
     public class DbServiceTests
     {
+        private string _connectionName = "Connection";
         [TestMethod]
         public void DbService_InitWithValidConnectionService_ReturnsDBServiceInstance()
         {
-            IDbService dbService = new DBService(new DbConnectionService("Connection"));
+            IDbService dbService = new DBService(new DbConnectionService(_connectionName));
             Assert.IsTrue(dbService != null);
         }
 
         [TestMethod]
-        public void DbService_InitWithEmptyConnectionString_ThrowsArgumentException()
+        public void DbService_InitWithEmptyConnectionString_ThrowsArgumentNullException()
         {
             Assert.ThrowsException<ArgumentNullException>(() => new DBService(null));
         }
@@ -27,7 +28,7 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
         [TestMethod]
         public void CreateDBConnection_CallWithValidConnectionString_ReturnsConnection()
         {
-            IDbService dbService = new DBService(new DbConnectionService("Connection"));
+            IDbService dbService = new DBService(new DbConnectionService(_connectionName));
             IDbConnection connection = dbService.CreateDbConnection();
             Assert.IsTrue(connection != null);
         }

@@ -9,10 +9,11 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
     [TestClass]
     public class DbConnectionServiceTests
     {
+        private string _connectionString = "Connection";
         [TestMethod]
         public void DbConnectionService_InitWithValidConnectionString_ReturnsDbConnectionInstanceInstance()
         {
-            IDbConnectionService dbConnectionService = new DbConnectionService("Connection");
+            IDbConnectionService dbConnectionService = new DbConnectionService(_connectionString);
             Assert.IsTrue(dbConnectionService != null);
         }
 
@@ -31,7 +32,7 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
         [TestMethod]
         public void GetConnectionSettings_CallWithValidConnectionString_ReturnsConnectionStringSettings()
         {
-            IDbConnectionService dbConnectionService = new DbConnectionService("Connection");
+            IDbConnectionService dbConnectionService = new DbConnectionService(_connectionString);
             ConnectionStringSettings result = dbConnectionService.GetConnectionSettings();
             Assert.IsTrue(result != null);
         }
@@ -39,7 +40,7 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
         [TestMethod]
         public void GetConnectionSettings_CallWithInvalidConnectionString_ThrowsException()
         {
-            IDbConnectionService dbConnectionService = new DbConnectionService("ConnectionXx");
+            IDbConnectionService dbConnectionService = new DbConnectionService(_connectionString + "-Invalid");
             Assert.ThrowsException<ConfigurationErrorsException>(() => dbConnectionService.GetConnectionSettings());
 
         }

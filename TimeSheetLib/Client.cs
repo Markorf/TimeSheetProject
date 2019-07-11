@@ -12,13 +12,22 @@ namespace TimeSheet.Shared.Models.Implementation
         public string ZipCode { get; set; }
         public Guid? CountryId { get; set; }
 
-        public Client(string name, string address = null, string city = null, string zipCode = null, Guid? countryId = null)
+        public Client(Guid id, string name, string address = null, string city = null, string zipCode = null, Guid? countryId = null)
         {
+            if (id == Guid.Empty)
+            {
+                Id = Guid.NewGuid();
+            }
+            else
+            {
+                Id = id;
+            }
+
             if (String.IsNullOrEmpty(name))
             {
                 throw new ArgumentException("Client name can't be null or empty string", nameof(name));
             }
-            Id = Guid.NewGuid();
+
             Name = name;
             CountryId = countryId;
             Address = address;

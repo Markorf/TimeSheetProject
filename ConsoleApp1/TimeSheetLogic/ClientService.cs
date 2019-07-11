@@ -22,10 +22,10 @@ namespace TimeSheet.BLL.Service.Implementation
         public IEnumerable<IClient> GetClients()
           => ClientDAL.GetClients();
 
-        public void UpdateClientById(IClient clientToEdit)
+        public void UpdateClientById(IClient client)
         {
-            Validate(clientToEdit);
-            ClientDAL.UpdateClientById(clientToEdit);
+            Validate(client);
+            ClientDAL.UpdateClientById(client);
         }
 
         public bool RemoveClientById(Guid id)

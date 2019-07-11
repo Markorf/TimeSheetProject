@@ -8,7 +8,6 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
         {
             IDbCommand command = connection.CreateCommand();
             command.CommandText = commandText;
-
             return command;
         }
 
@@ -24,7 +23,6 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
             IDbDataParameter parameter = command.CreateParameter();
             parameter.ParameterName = name;
             parameter.Value = value;
-
             return parameter;
         }
     }

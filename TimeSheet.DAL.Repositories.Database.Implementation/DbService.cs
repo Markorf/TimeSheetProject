@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Data.SqlClient;
+using System.Data;
+using System.Data.Common;
 using TimeSheet.DAL.Repositories.DbService.Interfaces;
 
 namespace TimeSheet.DAL.Repositories.DbService.Implementation
@@ -18,11 +19,12 @@ namespace TimeSheet.DAL.Repositories.DbService.Implementation
             DbConnectionService = dbConnectionService;
         }
 
-        public SqlConnection CreateDbConnection()
+        public IDbConnection CreateDbConnection()
         {
-            SqlConnection connection = new SqlConnection(DbConnectionService.GetConnectionSettings().ConnectionString);
+            DbProviderFactory dbFactory = DbProviderFactories.GetFactory(DbConnectionService.GetConnectionSettings().ProviderName);
+            DbConnection connection = dbFactory.CreateConnection();
+            connection.ConnectionString = DbConnectionService.GetConnectionSettings().ConnectionString;
             return connection;
         }
-
     }
 }

@@ -20,7 +20,7 @@ namespace TimeSheetLogic.UnitTests
         public void TestInitialize()
         {
             _countryDAL = Substitute.For<ICountryDAL>();
-            _countryList = new List<ICountry>() { new Country("Japan"), new Country("France"), new Country("Spain") };
+            _countryList = new List<ICountry>() { new Country(Guid.NewGuid(), "Japan"), new Country(Guid.NewGuid(), "France"), new Country(Guid.NewGuid(), "Spain") };
         }
 
         [TestMethod]

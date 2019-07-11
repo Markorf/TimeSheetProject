@@ -12,7 +12,7 @@ namespace TimeSheet.Shared.Models.UnitTests
         "Name can't be null or empty string")]
         public void Country_InitWithNullCountryName_ReturnsArgumentException()
         {
-            Country country = new Country(null);
+            Country country = new Country(Guid.NewGuid(), null);
         }
 
         [TestMethod]
@@ -20,13 +20,13 @@ namespace TimeSheet.Shared.Models.UnitTests
         "Name can't be null or empty string")]
         public void Country_InitWithEmptyCountryName_ReturnsArgumentException()
         {
-            Country country = new Country("");
+            Country country = new Country(Guid.NewGuid(), "");
         }
 
         [TestMethod]
         public void Country_InitWithValidCountryName_ReturnsCountryInstance()
         {
-            Country country = new Country("Malta");
+            Country country = new Country(Guid.NewGuid(), "Malta");
             Assert.IsTrue(country != null);
         }
     }

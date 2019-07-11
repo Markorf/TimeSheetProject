@@ -20,7 +20,7 @@ namespace TimeSheetLogic.UnitTests
         public void TestInitialize()
         {
             _clientDAL = Substitute.For<IClientDAL>();
-            _clientList = new List<IClient>() { new Client("Marko"), new Client("Max"), new Client("Bob") };
+            _clientList = new List<IClient>() { new Client(Guid.NewGuid(), "Marko"), new Client(Guid.NewGuid(), "Max"), new Client(Guid.NewGuid(), "Bob") };
         }
 
         [TestMethod]
@@ -68,7 +68,7 @@ namespace TimeSheetLogic.UnitTests
         {
             // Arrange
             ClientService clientService = new ClientService(_clientDAL);
-            Client clientToAdd = new Client("Max", null, "Addr", "CITY", null);
+            Client clientToAdd = new Client(Guid.NewGuid(), "Max", null, "Addr", "CITY", null);
             // Act
             clientService.AddClient(clientToAdd);
             // Assert
@@ -88,7 +88,7 @@ namespace TimeSheetLogic.UnitTests
         public void AddClient_AddClientWithInvalidFields_ThrowsException()
         {
             ClientService clientService = new ClientService(_clientDAL);
-            Assert.ThrowsException<ArgumentException>(() => clientService.AddClient(new Client(null)));
+            Assert.ThrowsException<ArgumentException>(() => clientService.AddClient(new Client(Guid.NewGuid(), null)));
             _clientDAL.DidNotReceive().AddClient(Arg.Any<IClient>());
         }
 
@@ -131,7 +131,7 @@ namespace TimeSheetLogic.UnitTests
         {
             // Arrange
             string clientName = "Marko";
-            _clientDAL.FilterClientsByName(clientName).Returns(new List<IClient>() { new Client("Marko") });
+            _clientDAL.FilterClientsByName(clientName).Returns(new List<IClient>() { new Client(Guid.NewGuid(), "Marko") });
             ClientService clientService = new ClientService(_clientDAL);
 
             // Act
@@ -191,7 +191,7 @@ namespace TimeSheetLogic.UnitTests
             // Arrange
             string clientName = "Maxx";
             ClientService clientService = new ClientService(_clientDAL);
-            IClient newClient = new Client(clientName, null, "Addr", "City", Guid.NewGuid()) { Id = _clientList.First().Id };
+            IClient newClient = new Client(Guid.NewGuid(), clientName, null, "Addr", "City", Guid.NewGuid()) { Id = _clientList.First().Id };
 
             // Act
             clientService.UpdateClientById(newClient);
@@ -211,7 +211,7 @@ namespace TimeSheetLogic.UnitTests
         public void UpdateClientById_PassClientWithInvalidFields_ThrowsArgumentException()
         {
             ClientService clientService = new ClientService(_clientDAL);
-            Assert.ThrowsException<ArgumentException>(() => clientService.UpdateClientById(new Client(null)));
+            Assert.ThrowsException<ArgumentException>(() => clientService.UpdateClientById(new Client(Guid.NewGuid(), null)));
             _clientDAL.DidNotReceive().UpdateClientById(Arg.Any<IClient>());
         }
 
@@ -223,7 +223,7 @@ namespace TimeSheetLogic.UnitTests
             ClientService clientService = new ClientService(_clientDAL);
             IEnumerable<IClient> clientList = clientService.GetClients();
             char firstLetter = 'M';
-            _clientDAL.FilterClientsByFirstLetter(firstLetter).Returns(new List<IClient>() { new Client("Marko"), new Client("Max") });
+            _clientDAL.FilterClientsByFirstLetter(firstLetter).Returns(new List<IClient>() { new Client(Guid.NewGuid(), "Marko"), new Client(Guid.NewGuid(), "Max") });
 
             // Act
             IEnumerable<IClient> filteredClientList = clientService.FilterClientsByFirstLetter(firstLetter);

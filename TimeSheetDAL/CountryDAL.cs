@@ -4,7 +4,7 @@ using TimeSheet.DAL.Repositories.Repository.Interfaces;
 using TimeSheet.Shared.Models.Interfaces;
 using TimeSheet.Shared.Models.Implementation;
 using TimeSheet.DAL.Repositories.DbService.Interfaces;
-using System.Data.SqlClient;
+using System.Data;
 
 namespace TimeSheet.DAL.Repositories.Repository.Implementation
 {
@@ -23,19 +23,28 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
 
         public IEnumerable<ICountry> GetCountries()
         {
-            List<ICountry> countryList = new List<ICountry>();
-            using (SqlConnection connection = _DbService.CreateDbConnection())
+            List<ICountry> countryList = new List<ICountry>() { };
+            using (IDbConnection connection = _DbService.CreateDbConnection())
             {
                 connection.Open();
-
-                SqlCommand command = new SqlCommand("SELECT * FROM Country;", connection);
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                using (IDbCommand command = connection.CreateCommand())
                 {
-                    countryList.Add(new Country(reader.GetString(1)));
+                    command.AddCommand("SELECT * FROM Country");
+
+                    using (IDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            countryList.Add(new Country(dataReader.GetSafeGuid(0), dataReader.GetSafeString(1)));
+
+                        }
+
+                    }
                 }
             }
+
             return countryList;
         }
     }
 }
+

@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="ClientDAL.cs" />
     <Compile Include="CountryDAL.cs" />
-    <Compile Include="ExtensionMethods\IDBConnectionExtension.cs" />
+    <Compile Include="Helpers\IDataRecordExtension.cs" />
+    <Compile Include="Helpers\IDBConnectionExtension.cs" />
+    <Compile Include="Helpers\ObjectExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

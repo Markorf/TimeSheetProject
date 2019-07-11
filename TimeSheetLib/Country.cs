@@ -5,16 +5,24 @@ namespace TimeSheet.Shared.Models.Implementation
 {
     public class Country : ICountry
     {
-        public Guid Id { get;}
-        public string Name { get; }
-        public Country(string countryName)
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public Country(Guid id, string name)
         {
-            if (String.IsNullOrEmpty(countryName))
+
+            if (id == Guid.Empty)
             {
-                throw new ArgumentException("Name can't be null or empty string", nameof(countryName));
+                Id = Guid.NewGuid();
             }
-            Id = Guid.NewGuid();
-            Name = countryName;
+            else
+            {
+                Id = id;
+            }
+            if (String.IsNullOrEmpty(name))
+            {
+                throw new ArgumentException("Name can't be null or empty string", nameof(name));
+            }
+            Name = name;
         }
     }
 }

@@ -50,6 +50,7 @@
     <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientDALTests.cs" />
     <Compile Include="CountryDALTests.cs" />
     <Compile Include="DbConnectionServiceTests.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -60,6 +61,7 @@
     <Compile Include="DbServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DbSeeder.cs" />
+    <Compile Include="Shared\ListExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -74,6 +76,10 @@
       <Project>{66ba0721-28f4-44eb-9f00-81336c36827e}</Project>
       <Name>TimeSheet.DAL.Repositories.DbService.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ConsoleApp1\TimeSheet.LIB.Interface\TimeSheet.Shared.Models.Interfaces.csproj">
+      <Project>{b7697020-350e-4659-b483-01bb93c977b1}</Project>
+      <Name>TimeSheet.Shared.Models.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TimeSheet.DAL.List.Interface\TimeSheet.DAL.Repositories.Repository.Interfaces.csproj">
       <Project>{e74c2b57-dc29-4d22-b89c-107ecd30abef}</Project>
       <Name>TimeSheet.DAL.Repositories.Repository.Interfaces</Name>
@@ -85,6 +91,10 @@
     <ProjectReference Include="..\TimeSheetDAL\TimeSheet.DAL.Repositories.Repository.Implementation.csproj">
       <Project>{17c2b036-969f-4e13-97fe-2c70d083ea7c}</Project>
       <Name>TimeSheet.DAL.Repositories.Repository.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSheetLib\TimeSheet.Shared.Models.Implementation.csproj">
+      <Project>{e6e99b2f-430a-4f64-88bf-66bb33a1c49e}</Project>
+      <Name>TimeSheet.Shared.Models.Implementation</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

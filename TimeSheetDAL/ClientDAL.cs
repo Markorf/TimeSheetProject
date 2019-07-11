@@ -5,7 +5,6 @@ using TimeSheet.Shared.Models.Implementation;
 using TimeSheet.DAL.Repositories.Repository.Interfaces;
 using TimeSheet.DAL.Repositories.DbService.Interfaces;
 using System.Data;
-using System.Data.SqlClient;
 
 namespace TimeSheet.DAL.Repositories.Repository.Implementation
 {
@@ -24,16 +23,22 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
 
         public IEnumerable<IClient> GetClients()
         {
-            List<IClient> clientList = new List<IClient>();
-            using (SqlConnection connection = _DbService.CreateDbConnection())
+            List<IClient> clientList = new List<IClient>() { };
+            using (IDbConnection connection = _DbService.CreateDbConnection())
             {
                 connection.Open();
-
-                SqlCommand command = new SqlCommand("SELECT * FROM Client;", connection);
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                using (IDbCommand command = connection.CreateCommand())
                 {
-                    clientList.Add(new Client(GetSafeString(reader, 1), GetSafeString(reader, 2), GetSafeString(reader, 3), GetSafeString(reader, 4), GetSafeGuid(reader, 5)));
+                    command.AddCommand("SELECT * FROM Client");
+
+                    using (IDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            clientList.Add(MapClient(dataReader));
+                        }
+
+                    }
                 }
             }
             return clientList;
@@ -47,14 +52,18 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
                 using (IDbCommand command = connection.CreateCommand())
                 {
                     command.AddCommand("Update Client SET Name=@name, Address=@address, City=@city, ZipCode=@zipCode, CountryId=@countryId WHERE id=@id");
-                    command.Parameters.Add(command.CreateParameter("@id", client.Id));
-                    command.Parameters.Add(command.CreateParameter("@name", client.Name));
-                    command.Parameters.Add(command.CreateParameter("@Address", PassAppropriateVal(client.Address)));
-                    command.Parameters.Add(command.CreateParameter("@city", PassAppropriateVal(client.City)));
-                    command.Parameters.Add(command.CreateParameter("@zipCode", PassAppropriateVal(client.ZipCode)));
-                    command.Parameters.Add(command.CreateParameter("@countryId", PassAppropriateVal(client.CountryId)));
-
-                    command.ExecuteNonQuery();
+                    AddParameters(command, client);
+                    try
+                    {
+                        if (command.ExecuteNonQuery() == 0)
+                        {
+                            throw new Exception("Client not updated");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
                 }
             }
         }
@@ -66,7 +75,7 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
                 connection.Open();
                 using (IDbCommand command = connection.CreateCommand())
                 {
-                    command.AddCommand("DELETE FROM Client WHERE id=@id");
+                    command.AddCommand("DELETE FROM Client WHERE Id=@id;");
                     command.Parameters.Add(command.CreateParameter("@id", clientId));
                     return command.ExecuteNonQuery() > 0;
                 }
@@ -81,14 +90,15 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
                 using (IDbCommand command = connection.CreateCommand())
                 {
                     command.AddCommand("INSERT INTO Client (Id, Name, Address, City, ZipCode, CountryId) VALUES (@id, @name, @address, @city, @zipCode, @countryId)");
-                    command.Parameters.Add(command.CreateParameter("@id", newClient.Id));
-                    command.Parameters.Add(command.CreateParameter("@name", newClient.Name));
-                    command.Parameters.Add(command.CreateParameter("@Address", PassAppropriateVal(newClient.Address)));
-                    command.Parameters.Add(command.CreateParameter("@city", PassAppropriateVal(newClient.City)));
-                    command.Parameters.Add(command.CreateParameter("@zipCode", PassAppropriateVal(newClient.ZipCode)));
-                    command.Parameters.Add(command.CreateParameter("@countryId", PassAppropriateVal(newClient.CountryId)));
-
-                    command.ExecuteNonQuery();
+                    AddParameters(command, newClient);
+                    try
+                    {
+                        command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
                 }
             }
         }
@@ -96,16 +106,21 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
         public IEnumerable<IClient> FilterClientsByName(string clientName)
         {
             List<IClient> clientList = new List<IClient>();
-            using (SqlConnection connection = _DbService.CreateDbConnection())
+            using (IDbConnection connection = _DbService.CreateDbConnection())
             {
                 connection.Open();
-
-                SqlCommand command = new SqlCommand("SELECT * FROM Client WHERE Name LIKE @name;", connection);
-                command.Parameters.Add(command.CreateParameter("@name", $"%{clientName}"));
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                using (IDbCommand command = connection.CreateCommand())
                 {
-                    clientList.Add(new Client(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetGuid(5)));
+                    command.AddCommand("SELECT * FROM Client WHERE Name LIKE @name;");
+                    command.Parameters.Add(command.CreateParameter("@name", $"%{clientName}"));
+                    using (IDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            clientList.Add(MapClient(dataReader));
+                        }
+
+                    }
                 }
             }
             return clientList;
@@ -114,38 +129,46 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
         public IEnumerable<IClient> FilterClientsByFirstLetter(char firstLetter)
         {
             List<IClient> clientList = new List<IClient>();
-            using (SqlConnection connection = _DbService.CreateDbConnection())
+            using (IDbConnection connection = _DbService.CreateDbConnection())
             {
                 connection.Open();
-
-                SqlCommand command = new SqlCommand("SELECT * FROM Client WHERE Name LIKE @name;", connection);
-                command.Parameters.Add(command.CreateParameter("@name", $"%{firstLetter}%"));
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                using (IDbCommand command = connection.CreateCommand())
                 {
-                    clientList.Add(new Client(reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetGuid(5)));
+                    command.AddCommand("SELECT * FROM Client WHERE Name LIKE @name;");
+                    command.Parameters.Add(command.CreateParameter("@name", $"%{firstLetter}%"));
+
+                    using (IDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            clientList.Add(MapClient(dataReader));
+
+                        }
+                    }
                 }
             }
             return clientList;
         }
 
-        private string GetSafeString(SqlDataReader reader, int colIndex)
+        private IClient MapClient(IDataRecord dataRecord)
+              => new Client(
+                                dataRecord.GetSafeGuid(0),
+                                dataRecord.GetSafeString(1),
+                                dataRecord.GetSafeString(2),
+                                dataRecord.GetSafeString(3),
+                                dataRecord.GetSafeString(4),
+                                dataRecord.GetSafeGuid(5)
+                      );
+
+        private void AddParameters(IDbCommand command, IClient client)
         {
-            if (!reader.IsDBNull(colIndex))
-                return reader.GetString(colIndex);
-            return string.Empty;
+            command.Parameters.Add(command.CreateParameter("@id", client.Id.GetDBNull()));
+            command.Parameters.Add(command.CreateParameter("@name", client.Name.GetDBNull()));
+            command.Parameters.Add(command.CreateParameter("@Address", client.Address.GetDBNull()));
+            command.Parameters.Add(command.CreateParameter("@city", client.City.GetDBNull()));
+            command.Parameters.Add(command.CreateParameter("@zipCode", client.ZipCode.GetDBNull()));
+            command.Parameters.Add(command.CreateParameter("@countryId", client.CountryId.GetDBNull()));
         }
-
-        private Guid GetSafeGuid(SqlDataReader reader, int colIndex)
-        {
-            if (!reader.IsDBNull(colIndex))
-                return reader.GetGuid(colIndex);
-            return Guid.Empty;
-        }
-
-        private object PassAppropriateVal(object val)
-            => val == null ? DBNull.Value : val;
-
     }
 }
 
