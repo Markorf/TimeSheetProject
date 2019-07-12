@@ -1,5 +1,5 @@
 ﻿using System.Data;
-// folder
+
 namespace TimeSheet.DAL.Repositories.Repository.Implementation
 {
     public static class IDbConnectionExtensions

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Data.SqlClient;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using TimeSheet.DAL.Repositories.Repository.Interfaces;
@@ -9,6 +8,7 @@ using TimeSheet.DAL.Repositories.DbService.Implementation;
 using TimeSheet.DAL.Repositories.Database.Implementation;
 using TimeSheet.Shared.Models.Interfaces;
 using TimeSheet.Shared.Models.Implementation;
+using System.Data;
 
 namespace TimeSheet.DAL.Repositories.Repository.UnitTests
 {
@@ -43,7 +43,7 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
         {
             IClientDAL clientDAL = new ClientDAL(new DBService(new DbConnectionService(_connectionStringName)));
             List<IClient> clientList = clientDAL.GetClients().ToList();
-            Assert.IsTrue(clientList.isEqualTo(DbSeeder.clientList));
+            Assert.IsTrue(clientList.Count() == DbSeeder.clientList.Count());
         }
 
         [TestMethod]
@@ -67,19 +67,19 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
         }
 
         [TestMethod]
-        public void UpdateClientById_PassClientWithInvalidCountryId_ThrowsException()
+        public void UpdateClientById_PassClientWithInvalidCountryId_ThrowsKeyNotFoundException()
         {
             _dbSeeder.EmptyTables();
             IClientDAL clientDAL = new ClientDAL(new DBService(new DbConnectionService(_connectionStringName)));
-            Assert.ThrowsException<Exception>(() => clientDAL.UpdateClientById(new Client(DbSeeder.TestClientId, "Foo", "Addr", null, null, Guid.NewGuid())));
+            Assert.ThrowsException<KeyNotFoundException>(() => clientDAL.UpdateClientById(new Client(DbSeeder.TestClientId, "Foo", "Addr", null, null, Guid.NewGuid())));
         }
 
         [TestMethod]
-        public void UpdateClientById_PassInvalidClientObject_ThrowsException()
+        public void UpdateClientById_PassInvalidClientObject_ThrowsKeyNotFoundException()
         {
             IClientDAL clientDAL = new ClientDAL(new DBService(new DbConnectionService(_connectionStringName)));
             IClient newClient = new Client(Guid.NewGuid(), "Foo", "Addr");
-            Assert.ThrowsException<Exception>(() => clientDAL.UpdateClientById(newClient));
+            Assert.ThrowsException<KeyNotFoundException>(() => clientDAL.UpdateClientById(newClient));
         }
 
         [TestMethod]
@@ -105,6 +105,21 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
         }
 
         [TestMethod]
+        public void GetClientById_PassValidGuid_ReturnsClientInstance()
+        {
+            IClientDAL clientDAL = new ClientDAL(new DBService(new DbConnectionService(_connectionStringName)));
+            IClient client = clientDAL.GetClientById(DbSeeder.TestClientId);
+            Assert.IsTrue(client != null);
+        }
+
+        [TestMethod]
+        public void GetClientById_PassNewGuid_ThrowsKeyNotFoundException()
+        {
+            IClientDAL clientDAL = new ClientDAL(new DBService(new DbConnectionService(_connectionStringName)));
+            Assert.ThrowsException<KeyNotFoundException>(() => clientDAL.GetClientById(Guid.NewGuid()));
+        }
+
+        [TestMethod]
         public void AddClient_PassNewClient_ReturnsTableWithAddedClient()
         {
             IClientDAL clientDAL = new ClientDAL(new DBService(new DbConnectionService(_connectionStringName)));
@@ -121,14 +136,14 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
         public void AddClient_PassClientWithSameId_ThrowsException()
         {
             IClientDAL clientDAL = new ClientDAL(new DBService(new DbConnectionService(_connectionStringName)));
-            Assert.ThrowsException<Exception>(() => clientDAL.AddClient(new Client(DbSeeder.TestClientId, "Namex")));
+            Assert.ThrowsException<ConstraintException>(() => clientDAL.AddClient(new Client(DbSeeder.TestClientId, "Namex")));
         }
 
         [TestMethod]
         public void AddClient_PassNonExistingCountryId_ThrowsException()
         {
             IClientDAL clientDAL = new ClientDAL(new DBService(new DbConnectionService(_connectionStringName)));
-            Assert.ThrowsException<Exception>(() => clientDAL.AddClient(new Client(Guid.NewGuid(), "Namex", null, null, null, Guid.NewGuid())));
+            Assert.ThrowsException<ConstraintException>(() => clientDAL.AddClient(new Client(Guid.NewGuid(), "Namex", null, null, null, Guid.NewGuid())));
         }
 
         [TestMethod]

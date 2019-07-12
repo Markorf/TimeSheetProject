@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using TimeSheet.Shared.Models.Interfaces;
 using TimeSheet.Shared.Models.Implementation;
 using TimeSheet.DAL.Repositories.Repository.Interfaces;
 using TimeSheet.DAL.Repositories.DbService.Interfaces;
-using System.Data;
 
 namespace TimeSheet.DAL.Repositories.Repository.Implementation
 {
@@ -53,22 +54,17 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
                 {
                     command.AddCommand("Update Client SET Name=@name, Address=@address, City=@city, ZipCode=@zipCode, CountryId=@countryId WHERE id=@id");
                     AddParameters(command, client);
-                    try
+
+                    if (command.ExecuteNonQuery() == 0)
                     {
-                        if (command.ExecuteNonQuery() == 0)
-                        {
-                            throw new Exception("Client not updated");
-                        }
+                        throw new KeyNotFoundException("Client not found");
                     }
-                    catch (Exception ex)
-                    {
-                        throw new Exception(ex.Message);
-                    }
+
                 }
             }
         }
 
-        public bool RemoveClientById(Guid clientId)
+        public bool RemoveClientById(Guid id)
         {
             using (IDbConnection connection = _DbService.CreateDbConnection())
             {
@@ -76,10 +72,39 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
                 using (IDbCommand command = connection.CreateCommand())
                 {
                     command.AddCommand("DELETE FROM Client WHERE Id=@id;");
-                    command.Parameters.Add(command.CreateParameter("@id", clientId));
+                    command.Parameters.Add(command.CreateParameter("@id", id));
                     return command.ExecuteNonQuery() > 0;
                 }
             }
+        }
+
+        public IClient GetClientById(Guid id)
+        {
+            IClient client = null;
+            using (IDbConnection connection = _DbService.CreateDbConnection())
+            {
+                connection.Open();
+                using (IDbCommand command = connection.CreateCommand())
+                {
+                    command.AddCommand("SELECT * FROM Client WHERE Id = @id");
+                    command.Parameters.Add(command.CreateParameter("@id", id));
+
+                    using (IDataReader dataReader = command.ExecuteReader(CommandBehavior.SingleRow))
+                    {
+                        if (dataReader.Read())
+                        {
+                            client = MapClient(dataReader);
+                        }
+                        else
+                        {
+                            throw new KeyNotFoundException("Client not found");
+                        }
+
+                    }
+                }
+            }
+
+            return client;
         }
 
         public void AddClient(IClient newClient)
@@ -95,9 +120,9 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
                     {
                         command.ExecuteNonQuery();
                     }
-                    catch (Exception ex)
+                    catch (SqlException ex)
                     {
-                        throw new Exception(ex.Message);
+                        throw new ConstraintException(ex.Message);
                     }
                 }
             }
@@ -169,6 +194,8 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
             command.Parameters.Add(command.CreateParameter("@zipCode", client.ZipCode.GetDBNull()));
             command.Parameters.Add(command.CreateParameter("@countryId", client.CountryId.GetDBNull()));
         }
+
+
     }
 }
 

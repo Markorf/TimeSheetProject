@@ -12,6 +12,7 @@ namespace TimeSheet.BLL.Service.Interfaces
         void UpdateClientById(IClient clientToEdit);
         bool RemoveClientById(Guid id);
         void AddClient(IClient newClient);
+        IClient GetClientById(Guid id);
         IEnumerable<IClient> FilterClientsByName(string clientName);
         IEnumerable<IClient> FilterClientsByFirstLetter(char firstLetter);
     }

@@ -31,6 +31,14 @@ namespace TimeSheet.BLL.Service.Implementation
         public bool RemoveClientById(Guid id)
           => ClientDAL.RemoveClientById(id);
 
+        public IClient GetClientById(Guid id)
+        {
+            if (id == Guid.Empty)
+            {
+                throw new ArgumentException("Guid can't be empty");
+            }
+            return ClientDAL.GetClientById(id);
+        }
 
         public void AddClient(IClient newClient)
         {
@@ -56,10 +64,7 @@ namespace TimeSheet.BLL.Service.Implementation
             {
                 throw new ArgumentNullException("Client can't be null", nameof(client));
             }
-            if (String.IsNullOrEmpty(client.Name))
-            {
-                throw new Exception("Client name can't be null or empty string");
-            }
         }
+
     }
 }

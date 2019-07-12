@@ -15,12 +15,13 @@ namespace TimeSheetLogic.UnitTests
     {
         IClientDAL _clientDAL;
         List<IClient> _clientList;
+        private static Guid id = Guid.Parse("cb77cce6-c2cb-473b-bdd2-5dac8c93b755");
 
         [TestInitialize]
         public void TestInitialize()
         {
             _clientDAL = Substitute.For<IClientDAL>();
-            _clientList = new List<IClient>() { new Client(Guid.NewGuid(), "Marko"), new Client(Guid.NewGuid(), "Max"), new Client(Guid.NewGuid(), "Bob") };
+            _clientList = new List<IClient>() { new Client(id, "Marko"), new Client(Guid.NewGuid(), "Max"), new Client(Guid.NewGuid(), "Bob") };
         }
 
         [TestMethod]
@@ -102,9 +103,7 @@ namespace TimeSheetLogic.UnitTests
             Guid clientId = clientList[0].Id;
             _clientDAL.RemoveClientById(clientId).Returns(true);
             // Act
-
             bool clientRemoved = clientService.RemoveClientById(clientId);
-
             // Assert
             Assert.IsTrue(clientRemoved);
             _clientDAL.Received(1).RemoveClientById(Arg.Is<Guid>(id => id == clientId));
@@ -124,6 +123,30 @@ namespace TimeSheetLogic.UnitTests
 
             Assert.IsFalse(isClientRemoved);
             _clientDAL.Received(1).RemoveClientById(Arg.Is<Guid>(id => id == clientId));
+        }
+
+        [TestMethod]
+        public void GetClientById_PassValidGuid_ReturnsClientInstance()
+        {
+            // Arrange
+            _clientDAL.GetClientById(id).Returns(_clientList.First());
+            // Act
+            ClientService clientService = new ClientService(_clientDAL);
+            // Assert
+            Assert.IsTrue(clientService.GetClientById(id).Id == id);
+            _clientDAL.Received(1).GetClientById(Arg.Is<Guid>(clientId => clientId == id));
+        }
+
+        [TestMethod]
+        public void GetClientById_PassEmptyGuid_ThrowsArgumentException()
+        {
+            // Arrange
+            Guid emptyGuid = Guid.Empty;
+            // Act
+            ClientService clientService = new ClientService(_clientDAL);
+            // Assert
+            Assert.ThrowsException<ArgumentException>(() => clientService.GetClientById(emptyGuid));
+            _clientDAL.DidNotReceive().GetClientById(Arg.Is<Guid>(id => id == emptyGuid));
         }
 
         [TestMethod]

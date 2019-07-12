@@ -9,7 +9,7 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
         {
             if (!record.IsDBNull(colIndex))
                 return record.GetGuid(colIndex);
-            return Guid.Empty;
+            return Guid.NewGuid();
         }
 
         public static string GetSafeString(this IDataRecord record, int colIndex)

@@ -43,9 +43,9 @@
   <ItemGroup>
     <Compile Include="ClientDAL.cs" />
     <Compile Include="CountryDAL.cs" />
-    <Compile Include="Helpers\IDataRecordExtension.cs" />
-    <Compile Include="Helpers\IDBConnectionExtension.cs" />
-    <Compile Include="Helpers\ObjectExtension.cs" />
+    <Compile Include="Shared\IDataRecordExtension.cs" />
+    <Compile Include="Shared\IDBConnectionExtension.cs" />
+    <Compile Include="Shared\ObjectExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

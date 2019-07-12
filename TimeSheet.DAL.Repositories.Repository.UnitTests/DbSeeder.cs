@@ -12,22 +12,25 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
 {
     public class DbSeeder
     {
-        public static Guid TestClientId = Guid.Parse("cb77cce6-c2cb-472b-bdd1-5dac8c93b756");
         public static Guid TestCountryId = Guid.Parse("cb77cce6-c2cb-473b-bdd2-5dac8c93b756");
+        public static Guid TestClientId = Guid.Parse("cb77cce6-c2cb-472b-bdd1-5dac8c93b756");
         public static string TestClientName = "Max";
-        public static List<ICountry> countryList = new List<ICountry>() { new Country(TestClientId, "Srbija") };
-        public static List<IClient> clientList = new List<IClient>() { new Client(TestClientId, TestClientName, "Ns", "Addr", "2122", TestClientId) };
+        public static List<ICountry> countryList = new List<ICountry>() { new Country(TestCountryId, "Serbia") };
+        public static List<IClient> clientList = new List<IClient>() { new Client(TestClientId, TestClientName, "Ns", "Addr", "2122", TestCountryId) };
         private IDbService _dbService;
 
         public DbSeeder(string connectionStringName)
         {
+            if (string.IsNullOrEmpty(connectionStringName))
+            {
+                throw new ArgumentNullException("Value cannot be null or empty string", nameof(connectionStringName));
+            }
             _dbService = new DBService(new DbConnectionService(connectionStringName));
         }
 
         public void ResetTables()
         {
-            ExecuteQuery("DELETE FROM Client");
-            ExecuteQuery("DELETE FROM Country");
+            EmptyTables();
 
             foreach (ICountry country in countryList)
             {

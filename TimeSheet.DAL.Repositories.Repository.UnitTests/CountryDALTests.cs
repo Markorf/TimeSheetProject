@@ -41,7 +41,7 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
         {
             ICountryDAL countryDAL = new CountryDAL(new DBService(new DbConnectionService(_connectionStringName)));
             List<ICountry> countryList = countryDAL.GetCountries().ToList();
-            Assert.IsTrue(countryList.isEqualTo(DbSeeder.countryList));
+            Assert.IsTrue(countryList.Count() == DbSeeder.countryList.Count());
         }
 
         [TestMethod]

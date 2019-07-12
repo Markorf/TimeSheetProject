@@ -13,8 +13,8 @@ namespace TimeSheetLogic.UnitTests
     [TestClass]
     public class CountryServiceTests
     {
-        ICountryDAL _countryDAL;
-        List<ICountry> _countryList;
+        private ICountryDAL _countryDAL;
+        private List<ICountry> _countryList;
 
         [TestInitialize]
         public void TestInitialize()

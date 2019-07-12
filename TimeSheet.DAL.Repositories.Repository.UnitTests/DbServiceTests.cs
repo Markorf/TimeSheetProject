@@ -42,7 +42,7 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
         [TestMethod]
         public void CreateDBConnection_CallWithInValidConnectionName_ThrowsException()
         {
-            Assert.ThrowsException<ConfigurationErrorsException>(() => new DBService(new DbConnectionService("ConnectionXX")).CreateDbConnection());
+            Assert.ThrowsException<ConfigurationErrorsException>(() => new DBService(new DbConnectionService(_connectionName + "-Invalid")).CreateDbConnection());
         }
     }
 }
