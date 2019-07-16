@@ -5,16 +5,18 @@ namespace TimeSheet.Shared.Models.Implementation
 {
     public class Client : IClient
     {
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string ZipCode { get; set; }
         public Guid? CountryId { get; set; }
 
-        public Client(Guid id, string name, string address = null, string city = null, string zipCode = null, Guid? countryId = null)
+        public Client() { }
+
+        public Client(Guid? id, string name, string address = null, string city = null, string zipCode = null, Guid? countryId = null)
         {
-            if (id == Guid.Empty)
+            if (id == null || id == Guid.Empty)
             {
                 Id = Guid.NewGuid();
             }

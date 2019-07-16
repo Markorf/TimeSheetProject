@@ -100,7 +100,7 @@ namespace TimeSheetLogic.UnitTests
             _clientDAL.GetClients().Returns(_clientList);
             ClientService clientService = new ClientService(_clientDAL);
             List<IClient> clientList = clientService.GetClients().ToList();
-            Guid clientId = clientList[0].Id;
+            Guid clientId = (Guid)clientList[0].Id;
             _clientDAL.RemoveClientById(clientId).Returns(true);
             // Act
             bool clientRemoved = clientService.RemoveClientById(clientId);

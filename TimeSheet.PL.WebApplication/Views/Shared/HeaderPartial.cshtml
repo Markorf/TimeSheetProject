@@ -1,4 +1,5 @@
-﻿<div class="top-bar"></div>
+﻿@model TimeSheet.PL.WebApplication.ViewModels.Shared.HeaderViewModel
+<div class="top-bar"></div>
 <div class="wrapper">
     <a href="index.html" class="logo">
         <img src="~/Content/images/logo.png" alt="VegaITSourcing Timesheet" />
@@ -25,5 +26,5 @@
             <a href="javascript:;">Logout</a>
         </li>
     </ul>
-    @Html.Partial("NavbarPartial")
+    @Html.Partial("NavbarPartial", Model.NavbarViewModel)
 </div>

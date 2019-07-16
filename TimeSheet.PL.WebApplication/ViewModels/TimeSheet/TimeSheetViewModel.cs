@@ -8,5 +8,9 @@ namespace TimeSheet.PL.WebApplication.ViewModels.TimeSheet
 {
     public class TimeSheetViewModel : LayoutViewModel
     {
+        public TimeSheetViewModel()
+        {
+            HeaderViewModel.NavbarViewModel.ActiveItem = NavbarViewModel.NavItems.TimeSheet;
+        }
     }
 }

@@ -15,3 +15,5 @@ C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic
 C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic\obj\Debug\TimeSheetLogic.pdb
 C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.dll
 C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic\bin\Debug\TimeSheet.DAL.Repositories.Database.Implementation.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic\bin\Debug\TimeSheet.DAL.Repositories.Database.Implementation.pdb

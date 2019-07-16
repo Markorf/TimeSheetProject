@@ -13,25 +13,25 @@
     <meta name="viewport" content="target-densitydpi=device-dpi">
     <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale = 1.0" />
     <title>@Model.Title</title>
-        <meta name="description" content="" />
-        @Styles.Render("~/Content/style")
-        @Scripts.Render("~/bundles/jquery")
-    </head>
+    <meta name="description" content="" />
+    @Styles.Render("~/Content/style")
+    @Scripts.Render("~/bundles/jquery")
+</head>
 
-    <body>
-        <div class="container">
-            <header class="header">
-                @Html.Partial("HeaderPartial")
-            </header>
-            <div class="wrapper">
-                @RenderBody()
-            </div>
-            <footer class="footer">
-                @Html.Partial("FooterPartial")
-                @RenderSection("Footer", required: false)
-            </footer>
+<body>
+    <div class="container">
+        <header class="header">
+            @Html.Partial("HeaderPartial", Model.HeaderViewModel)
+        </header>
+        <div class="wrapper">
+            @RenderBody()
         </div>
+        <footer class="footer">
+            @Html.Partial("FooterPartial")
+            @RenderSection("Footer", required: false)
+        </footer>
+    </div>
 
-        @RenderSection("scripts", required: false)
-    </body>
+    @RenderSection("scripts", required: false)
+</body>
 </html>

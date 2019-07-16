@@ -1,0 +1,25 @@
+﻿@model TimeSheet.PL.WebApplication.ViewModels.Clients.ClientsViewModel
+
+@if (Model.Clients.Count() > 0)
+{
+    <div class="accordion-wrap clients">
+        @foreach (var client in Model.Clients)
+        {
+            Model.ClientFormViewModel.SetClient(client);
+            <div class="item">
+                <div class="heading">
+                    <span>@client.Name</span>
+                    <i>+</i>
+                </div>
+                <div class="details">
+                    @Html.Partial("ClientFormPartial", Model.ClientFormViewModel)
+
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <h1>There are no available clients</h1>
+}

@@ -7,5 +7,6 @@ namespace TimeSheet.PL.WebApplication.ViewModels.Shared
 {
     public class HeaderViewModel
     {
+        public NavbarViewModel NavbarViewModel = new NavbarViewModel();
     }
 }

@@ -152,8 +152,17 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Categories\CategoriesViewModel.cs" />
+    <Compile Include="ViewModels\Clients\ClientFormViewModel.cs" />
+    <Compile Include="ViewModels\Clients\ClientsViewModel.cs" />
+    <Compile Include="ViewModels\Days\DaysViewModel.cs" />
+    <Compile Include="ViewModels\Projects\ProjectsViewModel.cs" />
+    <Compile Include="ViewModels\Reports\ReportsViewModel.cs" />
+    <Compile Include="ViewModels\Shared\Extensions\Extensions.cs" />
     <Compile Include="ViewModels\Shared\HeaderViewModel.cs" />
     <Compile Include="ViewModels\Shared\LayoutViewModel.cs" />
+    <Compile Include="ViewModels\Shared\NavbarViewModel.cs" />
+    <Compile Include="ViewModels\Team members\TeamMembersViewModel.cs" />
     <Compile Include="ViewModels\TimeSheet\TimeSheetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +265,139 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\NavbarPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TimeSheet\MonthsHeaderPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TimeSheet\MonthsTablePartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TimeSheet\TotalHoursPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Clients\HeaderBoxPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Clients\SearchFormPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Clients\CreateClientPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Clients\CreateClientDialogPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Clients\FilterLettersPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Clients\AccordionItemsPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Clients\PaginationPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Projects\AccordionItemsPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Projects\CreateProjectPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Projects\FilterLettersPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Projects\HeaderBoxPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Projects\MemberDialogPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Projects\PaginationPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Projects\SearchFormPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TeamMembers\HeaderBoxPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TeamMembers\CreateMemberPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TeamMembers\MemberDialogPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TeamMembers\AccordionItemsPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\TeamMembers\PaginationPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Reports\HeaderBoxPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Reports\ReportsTablePartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Reports\TotalReportsPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Reports\ReportsActionsPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Days\HeaderBoxPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Days\DaysTablePartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Days\FooterBoxPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Days\TotalHoursPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Days\WeekPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Days\DaysPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\TimeSheet.DAL.Repositories.DbService.Interfaces.csproj">
+      <Project>{66ba0721-28f4-44eb-9f00-81336c36827e}</Project>
+      <Name>TimeSheet.DAL.Repositories.DbService.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleApp1\TimeSheet.LIB.Interface\TimeSheet.Shared.Models.Interfaces.csproj">
+      <Project>{b7697020-350e-4659-b483-01bb93c977b1}</Project>
+      <Name>TimeSheet.Shared.Models.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleApp1\TimeSheet.Logic.List.Interface\TimeSheet.BLL.Service.Interfaces.csproj">
+      <Project>{c972fe50-0407-485d-8250-c6ff8d9ae4b9}</Project>
+      <Name>TimeSheet.BLL.Service.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConsoleApp1\TimeSheetLogic\TimeSheet.BLL.Service.Implementation.csproj">
+      <Project>{4567bf47-31f5-4b20-ba4d-b1f5aceed204}</Project>
+      <Name>TimeSheet.BLL.Service.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSheet.DAL.List.Interface\TimeSheet.DAL.Repositories.Repository.Interfaces.csproj">
+      <Project>{e74c2b57-dc29-4d22-b89c-107ecd30abef}</Project>
+      <Name>TimeSheet.DAL.Repositories.Repository.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSheet.DAL.Repositories.Database.Implementation\TimeSheet.DAL.Repositories.DbService.Implementation.csproj">
+      <Project>{0e32156e-26f9-478b-807c-ccdd06b76894}</Project>
+      <Name>TimeSheet.DAL.Repositories.DbService.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSheetDAL\TimeSheet.DAL.Repositories.Repository.Implementation.csproj">
+      <Project>{17c2b036-969f-4e13-97fe-2c70d083ea7c}</Project>
+      <Name>TimeSheet.DAL.Repositories.Repository.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TimeSheetLib\TimeSheet.Shared.Models.Implementation.csproj">
+      <Project>{e6e99b2f-430a-4f64-88bf-66bb33a1c49e}</Project>
+      <Name>TimeSheet.Shared.Models.Implementation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Clients\ClientFormPartial.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

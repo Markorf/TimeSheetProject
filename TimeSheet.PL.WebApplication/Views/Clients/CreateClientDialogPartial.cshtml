@@ -1,0 +1,34 @@
+﻿@model TimeSheet.PL.WebApplication.ViewModels.Clients.ClientFormViewModel
+<div id="new-member" class="new-member-inner">
+    <h2>Create new client</h2>
+    @using (Html.BeginForm("Create", "Clients", FormMethod.Post))
+    {
+        <ul class="form">
+            <li>
+                @Html.LabelFor(m => m.Client.Name, "Client name: ")
+                @Html.TextBoxFor(m => m.Client.Name, new { @class = "in-text" })
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Client.Address, "Address: ")
+                @Html.TextBoxFor(m => m.Client.Address, new { @class = "in-text" })
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Client.City, "City: ")
+                @Html.TextBoxFor(m => m.Client.City, new { @class = "in-text" })
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Client.ZipCode, "Zip/Postal code: ")
+                @Html.TextBoxFor(m => m.Client.ZipCode, new { @class = "in-text" })
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Client.CountryId, "Country: ")
+                @Html.DropDownListFor(m => m.Client.CountryId, Model.Countries.Select(country => new SelectListItem() { Text = country.Name, Value = country.Id.ToString(), Selected = country.Id == Model.Client.CountryId }))
+            </li>
+        </ul>
+        <div class="buttons">
+            <div class="inner">
+                <button type="submit" class="btn green">Save</button>
+            </div>
+        </div>
+    }
+</div>

@@ -31,12 +31,6 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
         }
 
         [TestMethod]
-        public void CountryDAL_InitWithNullDBService_ThrowsArgumentNullException()
-        {
-            Assert.ThrowsException<ArgumentNullException>(() => new CountryDAL(null));
-        }
-
-        [TestMethod]
         public void GetCountries_GetCountriesFromNonEmptyTable_ReturnsTableWithList()
         {
             ICountryDAL countryDAL = new CountryDAL(new DBService(new DbConnectionService(_connectionStringName)));

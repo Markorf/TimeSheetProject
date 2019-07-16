@@ -17,9 +17,14 @@ namespace TimeSheet.PL.WebApplication
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
                         "~/Scripts/main/modernizr-*"));
 
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle("~/bundles/main").Include(
+                         "~/Scripts/main/default.js",
+                        "~/Scripts/main/accordion.js",
+                      "~/Scripts/libs/jquery.fancybox.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/ui").Include(
+                      "~/Scripts/libs/jquery-ui-1.9.2.custom.min.js",
+                      "~/Scripts/main/default.js"));
 
             bundles.Add(new StyleBundle("~/Content/style").Include(
                  "~/Content/style.css"

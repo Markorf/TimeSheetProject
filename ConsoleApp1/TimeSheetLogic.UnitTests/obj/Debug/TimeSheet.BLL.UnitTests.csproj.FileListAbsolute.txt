@@ -30,3 +30,5 @@ C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic
 C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic.UnitTests\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic.UnitTests\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.dll
 C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic.UnitTests\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.pdb
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic.UnitTests\bin\Debug\TimeSheet.DAL.Repositories.Database.Implementation.dll
+C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheetLogic.UnitTests\bin\Debug\TimeSheet.DAL.Repositories.Database.Implementation.pdb
