@@ -9,45 +9,54 @@ using TimeSheet.DAL.Repositories.DbService.Implementation;
 using TimeSheet.DAL.Repositories.DbService.Interfaces;
 using TimeSheet.DAL.Repositories.Repository.Implementation;
 using TimeSheet.DAL.Repositories.Database.Implementation;
-using TimeSheet.Shared.Models.Implementation;
 using TimeSheet.BLL.Service.Interfaces;
 using TimeSheet.BLL.Service.Implementation;
+using TimeSheet.Shared.Models.Implementation;
+using TimeSheet.PL.WebApplication.ViewModels.Shared;
 
 namespace TimeSheet.PL.WebApp.Controllers
 {
+    [RoutePrefix("clients")]
     public class ClientsController : Controller
     {
         private IDbService _dbService;
         private ICountryService _countryService;
         private IClientService _clientService;
         private string _connectionStringName = "Connection";
+        private ClientsViewModel _clientsViewModel = new ClientsViewModel();
 
         public ClientsController()
         {
             _dbService = new DBService(new DbConnectionService(_connectionStringName));
             _countryService = new CountryService(new CountryDAL(_dbService));
             _clientService = new ClientService(new ClientDAL(_dbService));
+
+            IEnumerable<ICountry> countryList = _countryService.GetCountries();
+            _clientsViewModel.CreateClientDialogPartialViewModel.Countries = countryList;
+            _clientsViewModel.AccordionItemsPartialViewModel.ClientFormPartialViewModel.Countries = countryList;
+            _clientsViewModel.FilterLettersPartialViewModel.ClientList = _clientService.GetClients();
         }
 
-        [Route("clients")]
-        public ActionResult Index()
+        [Route("")]
+        public ActionResult Index(IEnumerable<IClient> clientList = null)
         {
-
-            IEnumerable<ICountry> countries = _countryService.GetCountries();
-            IEnumerable<IClient> clients = _clientService.GetClients();
-            return View(new ClientsViewModel(new ClientFormViewModel(countries), clients));
+            if (clientList == null)
+            {
+                clientList = _clientService.GetClients();
+            }
+            _clientsViewModel.AccordionItemsPartialViewModel.Clients = clientList;
+            return View("Index", _clientsViewModel);
         }
 
-        [Route("clients")]
+        [Route("update")]
         [HttpPost]
-        public ActionResult Update(Client client)
+        public ActionResult Update(ClientViewModel client)
         {
             _clientService.UpdateClientById(client);
-            return RedirectToAction("index");
-
+            return RedirectToAction("Index");
         }
 
-        [Route("clients/{id}")]
+        [Route("{id}")]
         [HttpGet]
         public ActionResult Delete(Guid id)
         {
@@ -58,11 +67,33 @@ namespace TimeSheet.PL.WebApp.Controllers
 
         [Route("create")]
         [HttpPost]
-        public ActionResult Create(ClientFormViewModel clientFormVM)
+        public ActionResult Create(CreateClientDialogPartialViewModel form)
         {
-            IClient client = new Client(Guid.NewGuid(), clientFormVM.Client.Name, clientFormVM.Client.Address, clientFormVM.Client.City, clientFormVM.Client.ZipCode, clientFormVM.Client.CountryId);
+            if (!ModelState.IsValid)
+            {
+                return Index();
+            }
+            IClient client = new Client(Guid.NewGuid(), form.Client.Name, form.Client.Address, form.Client.City, form.Client.ZipCode, form.Client.CountryId);
             _clientService.AddClient(client);
-            return RedirectToAction("index");
+            return RedirectToAction("Index");
+        }
+
+        [Route("FilteredByLetter")]
+        [HttpGet]
+        public ActionResult FilterByLetter(char letter)
+        {
+            IEnumerable<IClient> filteredList = _clientService.FilterClientsByFirstLetter(letter);
+            _clientsViewModel.FilterLettersPartialViewModel.CurrentLetter = letter;
+            _clientsViewModel.FilterLettersPartialViewModel.ClientList = _clientService.GetClients();
+
+            return Index(filteredList);
+        }
+        [Route("FilterByName")]
+        [HttpGet]
+        public ActionResult FilterByName(string searchText)
+        {
+            IEnumerable<IClient> filteredList = _clientService.FilterClientsByName(searchText);
+            return Index(filteredList);
         }
     }
 }

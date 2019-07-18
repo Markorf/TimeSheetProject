@@ -1,18 +1,18 @@
-﻿@model TimeSheet.PL.WebApplication.ViewModels.Clients.ClientsViewModel
+﻿@model TimeSheet.PL.WebApplication.ViewModels.Clients.AccordionItemsPartialViewModel
 
 @if (Model.Clients.Count() > 0)
 {
     <div class="accordion-wrap clients">
         @foreach (var client in Model.Clients)
         {
-            Model.ClientFormViewModel.SetClient(client);
+            Model.ClientFormPartialViewModel.Client = client;
             <div class="item">
                 <div class="heading">
                     <span>@client.Name</span>
                     <i>+</i>
                 </div>
                 <div class="details">
-                    @Html.Partial("ClientFormPartial", Model.ClientFormViewModel)
+                    @Html.Partial("ClientFormPartial", Model.ClientFormPartialViewModel)
 
                 </div>
             </div>

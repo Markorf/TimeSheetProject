@@ -2,20 +2,21 @@
 using System.ComponentModel.DataAnnotations;
 using TimeSheet.Shared.Models.Interfaces;
 
-namespace TimeSheet.Shared.Models.Implementation
+namespace TimeSheet.PL.WebApplication.ViewModels.Shared
 {
-    public class Client : IClient
+    public class ClientViewModel : IClient
     {
         public Guid? Id { get; set; }
+        [Required(ErrorMessage = "This field is required")]
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string ZipCode { get; set; }
         public Guid? CountryId { get; set; }
 
-        public Client() { }
+        public ClientViewModel() { }
 
-        public Client(Guid? id, string name, string address = null, string city = null, string zipCode = null, Guid? countryId = null)
+        public ClientViewModel(Guid? id, string name, string address = null, string city = null, string zipCode = null, Guid? countryId = null)
         {
             if (id == null || id == Guid.Empty)
             {

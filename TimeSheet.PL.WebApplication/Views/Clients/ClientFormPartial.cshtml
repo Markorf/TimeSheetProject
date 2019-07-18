@@ -1,4 +1,4 @@
-﻿@model TimeSheet.PL.WebApplication.ViewModels.Clients.ClientFormViewModel
+﻿@model TimeSheet.PL.WebApplication.ViewModels.Clients.ClientFormPartialViewModel
 
 @using (Html.BeginForm("Update", "Clients", FormMethod.Post))
 {
@@ -18,7 +18,6 @@
             @Html.LabelFor(m => m.Client.Address, "Address: ")
             @Html.TextBoxFor(m => m.Client.Address, new { @class = "in-text" })
         </li>
-        <li>
         <li>
             @Html.LabelFor(m => m.Client.CountryId, "Country: ")
             @Html.DropDownListFor(m => m.Client.CountryId, Model.Countries.Select(country => new SelectListItem() { Text = country.Name, Value = country.Id.ToString(), Selected = country.Id == Model.Client.CountryId }))

@@ -3,10 +3,10 @@
     <h2><i class="ico clients"></i>Clients</h2>
     @Html.Partial("HeaderBoxPartial")
     <div class="new-member-wrap">
-        @Html.Partial("CreateClientDialogPartial", Model.ClientFormViewModel)
+        @Html.Partial("CreateClientDialogPartial", Model.CreateClientDialogPartialViewModel)
     </div>
-    @Html.Partial("FilterLettersPartial")
-    @Html.Partial("AccordionItemsPartial")
+    @Html.Partial("FilterLettersPartial", Model.FilterLettersPartialViewModel)
+    @Html.Partial("AccordionItemsPartial", Model.AccordionItemsPartialViewModel)
     @Html.Partial("PaginationPartial")
 </section>
 

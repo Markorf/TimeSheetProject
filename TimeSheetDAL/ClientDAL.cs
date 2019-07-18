@@ -136,8 +136,8 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
                 connection.Open();
                 using (IDbCommand command = connection.CreateCommand())
                 {
-                    command.AddCommand("SELECT * FROM Client WHERE Name LIKE @name;");
-                    command.Parameters.Add(command.CreateParameter("@name", $"%{clientName}"));
+                    command.AddCommand("SELECT * FROM Client WHERE lower(Name) LIKE @name;");
+                    command.Parameters.Add(command.CreateParameter("@name", $"%{clientName.ToLower()}%"));
                     using (IDataReader dataReader = command.ExecuteReader())
                     {
                         while (dataReader.Read())
@@ -159,8 +159,8 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
                 connection.Open();
                 using (IDbCommand command = connection.CreateCommand())
                 {
-                    command.AddCommand("SELECT * FROM Client WHERE Name LIKE @name;");
-                    command.Parameters.Add(command.CreateParameter("@name", $"%{firstLetter}%"));
+                    command.AddCommand("SELECT * FROM Client WHERE lower(Name) LIKE @name;");
+                    command.Parameters.Add(command.CreateParameter("@name", $"{firstLetter.ToString().ToLower()}%"));
 
                     using (IDataReader dataReader = command.ExecuteReader())
                     {
