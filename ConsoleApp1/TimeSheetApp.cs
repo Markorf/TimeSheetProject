@@ -33,6 +33,7 @@ namespace TimeSheetApp
 
             //
 
+            Console.WriteLine((int)Math.Ceiling(1.9));
 
 
             IClientService cs = new ClientService(new ClientDAL(new DBService(new DbConnectionService("Connection"))));

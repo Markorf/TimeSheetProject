@@ -53,6 +53,21 @@ namespace TimeSheetLogic.UnitTests
         }
 
         [TestMethod]
+        public void GetClientsByPaging_GetListWithClients_ReturnsNonEmptyList()
+        {
+            // Arrange
+            int offset = 0;
+            int rows = 5;
+            _clientDAL.GetClientsByPaging(offset, rows).Returns(_clientList);
+            ClientService clientService = new ClientService(_clientDAL);
+            // Act
+            IEnumerable<IClient> clientList = clientService.GetClientsByPaging(offset, rows);
+            int listCount = clientList.Count();
+            // Assert
+            Assert.IsTrue(clientList.Count() == clientList.Count());
+        }
+
+        [TestMethod]
         public void GetClients_GetListWithNoClients_ReturnsEmptyList()
         {
             // Arrange
@@ -60,6 +75,20 @@ namespace TimeSheetLogic.UnitTests
             ClientService clientService = new ClientService(_clientDAL);
             // Act
             IEnumerable<IClient> clientList = clientService.GetClients();
+            // Assert
+            Assert.IsTrue(clientList.Count() == 0);
+        }
+
+        [TestMethod]
+        public void GetClientsByPaging_GetListWithNoClients_ReturnsEmptyList()
+        {
+            // Arrange
+            int offset = 0;
+            int rows = 5;
+            _clientDAL.GetClientsByPaging(offset, rows).Returns(new List<IClient>() { });
+            ClientService clientService = new ClientService(_clientDAL);
+            // Act
+            IEnumerable<IClient> clientList = clientService.GetClientsByPaging(offset, rows);
             // Assert
             Assert.IsTrue(clientList.Count() == 0);
         }

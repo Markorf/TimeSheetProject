@@ -175,6 +175,30 @@ namespace TimeSheet.DAL.Repositories.Repository.Implementation
             return clientList;
         }
 
+        public IEnumerable<IClient> GetClientsByPaging(int offset, int rowsCount)
+        {
+            List<IClient> clientList = new List<IClient>();
+            using (IDbConnection connection = _DbService.CreateDbConnection())
+            {
+                connection.Open();
+                using (IDbCommand command = connection.CreateCommand())
+                {
+                    command.AddCommand("SELECT * FROM Client ORDER BY Name OFFSET @offset ROWS FETCH NEXT @rowsCount ROWS ONLY;");
+                    command.Parameters.Add(command.CreateParameter("@offset", offset));
+                    command.Parameters.Add(command.CreateParameter("@rowsCount", rowsCount));
+
+                    using (IDataReader dataReader = command.ExecuteReader())
+                    {
+                        while (dataReader.Read())
+                        {
+                            clientList.Add(MapClient(dataReader));
+
+                        }
+                    }
+                }
+            }
+            return clientList;
+        }
         private IClient MapClient(IDataRecord dataRecord)
               => new Client(
                                 dataRecord.GetSafeGuid(0),

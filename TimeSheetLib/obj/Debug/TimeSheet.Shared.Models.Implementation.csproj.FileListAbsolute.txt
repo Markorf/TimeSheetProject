@@ -1,7 +1,0 @@
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\bin\Debug\TimeSheetLib.dll
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\bin\Debug\TimeSheetLib.pdb
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\bin\Debug\TimeSheet.LIB.Interface.dll
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\bin\Debug\TimeSheet.LIB.Interface.pdb
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\obj\Debug\TimeSheet.Shared.Models.Implementation.csprojResolveAssemblyReference.cache
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\obj\Debug\TimeSheetLib.dll
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\TimeSheetLib\obj\Debug\TimeSheetLib.pdb

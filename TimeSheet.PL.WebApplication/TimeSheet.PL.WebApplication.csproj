@@ -49,6 +49,15 @@
       <HintPath>..\ConsoleApp1\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="SimpleInjector, Version=4.6.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\ConsoleApp1\packages\SimpleInjector.4.6.0\lib\net45\SimpleInjector.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web, Version=4.6.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\ConsoleApp1\packages\SimpleInjector.Integration.Web.4.6.0\lib\net40\SimpleInjector.Integration.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleInjector.Integration.Web.Mvc, Version=4.6.0.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\ConsoleApp1\packages\SimpleInjector.Integration.Web.Mvc.4.6.0\lib\net40\SimpleInjector.Integration.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -102,6 +111,9 @@
       <Private>True</Private>
       <HintPath>..\ConsoleApp1\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivator, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\ConsoleApp1\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\ConsoleApp1\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -141,6 +153,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SimpleInjectorInitializer.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\DaysController.cs" />
@@ -159,7 +172,9 @@
     <Compile Include="ViewModels\Clients\ClientsViewModel.cs" />
     <Compile Include="ViewModels\Clients\CreateClientDialogPartialViewModel.cs" />
     <Compile Include="ViewModels\Clients\FilterLettersPartialViewModel.cs" />
+    <Compile Include="ViewModels\Clients\PaginationPartialViewModel.cs" />
     <Compile Include="ViewModels\Days\DaysViewModel.cs" />
+    <Compile Include="ViewModels\Errors\Error404ViewModel.cs" />
     <Compile Include="ViewModels\Projects\ProjectsViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportsViewModel.cs" />
     <Compile Include="ViewModels\Shared\ClientViewModel.cs" />
@@ -226,7 +241,10 @@
     <Content Include="Scripts\main\default.js" />
     <Content Include="Scripts\main\jquery-1.8.3.min.js" />
     <Content Include="Scripts\main\modernizr-2.6.2.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Views\Errors\Error500.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -285,9 +303,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Clients\SearchFormPartial.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Clients\CreateClientPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Clients\CreateClientDialogPartial.cshtml" />
@@ -403,6 +418,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Clients\ClientFormPartial.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Errors\Error404.cshtml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

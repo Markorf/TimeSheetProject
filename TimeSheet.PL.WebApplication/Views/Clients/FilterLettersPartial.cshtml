@@ -8,7 +8,16 @@
             <li class="@isLetterDisabled @isLetterActive">
                 @if (isLetterDisabled == null)
                 {
-                    @Html.ActionLink(letter.ToString(), "FilterByLetter", "Clients", new { letter }, null)
+                    if (isLetterActive != null)
+                    {
+                        @Html.ActionLink(letter.ToString(), "Index", "Clients")
+
+                    }
+                    else
+                    {
+                        @Html.ActionLink(letter.ToString(), "FilterByLetter", "Clients", new { letter }, null)
+
+                    }
                 }
                 else
                 {

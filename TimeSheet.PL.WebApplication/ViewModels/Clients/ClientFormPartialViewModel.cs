@@ -7,5 +7,6 @@ namespace TimeSheet.PL.WebApplication.ViewModels.Clients
 {
     public class ClientFormPartialViewModel : BaseFormViewModel
     {
+        public bool IsClientValid { get; set; }
     }
 }

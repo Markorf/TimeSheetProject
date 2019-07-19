@@ -13,6 +13,7 @@ namespace TimeSheet.BLL.Service.Interfaces
         bool RemoveClientById(Guid id);
         void AddClient(IClient newClient);
         IClient GetClientById(Guid id);
+        IEnumerable<IClient> GetClientsByPaging(int offset, int rowsCount);
         IEnumerable<IClient> FilterClientsByName(string clientName);
         IEnumerable<IClient> FilterClientsByFirstLetter(char firstLetter);
     }

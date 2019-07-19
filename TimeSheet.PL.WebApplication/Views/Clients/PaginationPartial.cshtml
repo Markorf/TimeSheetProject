@@ -1,16 +1,32 @@
-﻿<div class="pagination">
+﻿@model TimeSheet.PL.WebApplication.ViewModels.Clients.PaginationPartialViewModel
+<div class="pagination">
     <ul>
-        <li>
-            <a href="javascript:;">1</a>
-        </li>
-        <li>
-            <a href="javascript:;">2</a>
-        </li>
-        <li>
-            <a href="javascript:;">3</a>
-        </li>
-        <li class="last">
-            <a href="javascript:;">Next</a>
-        </li>
+        @if (Model.CurrentPage != 1)
+        {
+            <li>
+                @Html.ActionLink("Previous", "LoadNextClients", new { page = Model.CurrentPage - 1 }, null)
+            </li>
+        }
+        @for (int currentPage = 1; currentPage <= Model.PageCount; ++currentPage)
+        {
+            <li>
+                @if (Model.CurrentPage == currentPage)
+                {
+                    <a class="disabled" href="javascript:;">@currentPage</a>
+                }
+                else
+                {
+                    @Html.ActionLink(currentPage.ToString(), "LoadNextClients", new { page = currentPage }, null)
+                }
+            </li>
+        }
+
+        @if (Model.CurrentPage != Model.PageCount)
+        {
+            <li class="last">
+                @Html.ActionLink("Next", "LoadNextClients", new { page = Model.CurrentPage + 1 }, null)
+            </li>
+
+        }
     </ul>
 </div>

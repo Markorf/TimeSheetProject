@@ -1,9 +1,12 @@
 ﻿@model TimeSheet.PL.WebApplication.ViewModels.Clients.CreateClientDialogPartialViewModel
+
 <div id="new-member" class="new-member-inner">
     <h2>Create new client</h2>
     @using (Html.BeginForm("Create", "Clients", FormMethod.Post))
     {
+        @Html.AntiForgeryToken()
         @Html.ValidationSummary(true, "Please fix the following errors.")
+
         <ul class="form">
             <li>
                 @Html.LabelFor(m => m.Client.Name, "Client name: ")
@@ -25,7 +28,6 @@
             <li>
                 @Html.LabelFor(m => m.Client.CountryId, "Country: ")
                 @Html.DropDownListFor(m => m.Client.CountryId, Model.Countries.Select(country => new SelectListItem() { Text = country.Name, Value = country.Id.ToString(), Selected = country.Id == Model.Client.CountryId }))
-                @Html.AntiForgeryToken()
             </li>
         </ul>
         <div class="buttons">
@@ -35,3 +37,10 @@
         </div>
     }
 </div>
+
+@if (Model.HasValidationError)
+{
+    <script>
+        window.onload = () => $("#CreateClient").click();
+    </script>
+}

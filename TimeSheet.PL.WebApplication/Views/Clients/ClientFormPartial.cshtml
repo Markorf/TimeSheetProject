@@ -1,28 +1,31 @@
 ﻿@model TimeSheet.PL.WebApplication.ViewModels.Clients.ClientFormPartialViewModel
-
 @using (Html.BeginForm("Update", "Clients", FormMethod.Post))
 {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Please fix the following errors.")
+
     <ul class="form">
         @Html.HiddenFor(m => m.Client.Id)
         <li>
             @Html.LabelFor(m => m.Client.Name, "Client name: ")
             @Html.TextBoxFor(m => m.Client.Name, new { @class = "in-text" })
+            @Html.ValidationMessageFor(m => m.Client.Name)
         </li>
         <li>
             @Html.LabelFor(m => m.Client.ZipCode, "Zip/Postal code: ")
             @Html.TextBoxFor(m => m.Client.ZipCode, new { @class = "in-text" })
         </li>
     </ul>
-    <ul class="form">
-        <li>
-            @Html.LabelFor(m => m.Client.Address, "Address: ")
-            @Html.TextBoxFor(m => m.Client.Address, new { @class = "in-text" })
-        </li>
-        <li>
-            @Html.LabelFor(m => m.Client.CountryId, "Country: ")
-            @Html.DropDownListFor(m => m.Client.CountryId, Model.Countries.Select(country => new SelectListItem() { Text = country.Name, Value = country.Id.ToString(), Selected = country.Id == Model.Client.CountryId }))
-        </li>
-    </ul>
+        <ul class="form">
+            <li>
+                @Html.LabelFor(m => m.Client.Address, "Address: ")
+                @Html.TextBoxFor(m => m.Client.Address, new { @class = "in-text" })
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Client.CountryId, "Country: ")
+                @Html.DropDownListFor(m => m.Client.CountryId, Model.Countries.Select(country => new SelectListItem() { Text = country.Name, Value = country.Id.ToString(), Selected = country.Id == Model.Client.CountryId }))
+            </li>
+        </ul>
         <ul class="form last">
             <li>
                 @Html.LabelFor(m => m.Client.City, "City: ")

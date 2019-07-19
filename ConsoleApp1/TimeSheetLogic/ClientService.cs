@@ -55,6 +55,9 @@ namespace TimeSheet.BLL.Service.Implementation
             return ClientDAL.FilterClientsByName(clientName);
         }
 
+        public IEnumerable<IClient> GetClientsByPaging(int offset, int rowsCount)
+            => ClientDAL.GetClientsByPaging(offset, rowsCount);
+
         public IEnumerable<IClient> FilterClientsByFirstLetter(char firstLetter)
          => ClientDAL.FilterClientsByFirstLetter(firstLetter);
 

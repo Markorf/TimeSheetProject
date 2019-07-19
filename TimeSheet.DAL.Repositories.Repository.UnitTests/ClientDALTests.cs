@@ -47,11 +47,32 @@ namespace TimeSheet.DAL.Repositories.Repository.UnitTests
         }
 
         [TestMethod]
+        public void GetClientsByPaging_GetClientsFromNonEmptyTable_ReturnsTableWithList()
+        {
+            int rows = 5;
+            int offset = 0;
+            IClientDAL clientDAL = new ClientDAL(new DBService(new DbConnectionService(_connectionStringName)));
+            List<IClient> clientList = clientDAL.GetClientsByPaging(offset, rows).ToList();
+            Assert.IsTrue(clientList.Count() <= rows && clientList.Count() > 0);
+        }
+
+        [TestMethod]
         public void GetClients_GetClientsFromEmptyTable_ReturnsEmptyTable()
         {
             _dbSeeder.EmptyTables();
             IClientDAL clientDAL = new ClientDAL(new DBService(new DbConnectionService(_connectionStringName)));
             IEnumerable<IClient> clientList = clientDAL.GetClients();
+            Assert.IsTrue(clientList.Count() == 0);
+        }
+
+        [TestMethod]
+        public void GetClientsByPaging_GetClientsFromEmptyTable_ReturnsTableWithList()
+        {
+            _dbSeeder.EmptyTables();
+            int rows = 5;
+            int offset = 0;
+            IClientDAL clientDAL = new ClientDAL(new DBService(new DbConnectionService(_connectionStringName)));
+            List<IClient> clientList = clientDAL.GetClientsByPaging(offset, rows).ToList();
             Assert.IsTrue(clientList.Count() == 0);
         }
 

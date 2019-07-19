@@ -1,5 +1,0 @@
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.dll
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.pdb
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\obj\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.dll
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\obj\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.pdb
-C:\Users\m.medic\Desktop\TimeSheet\MyTimeSheetProject\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\obj\Debug\TimeSheet.DAL.Repositories.DbService.Interfaces.csprojResolveAssemblyReference.cache

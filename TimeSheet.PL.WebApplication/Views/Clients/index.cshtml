@@ -1,13 +1,16 @@
 ﻿@model TimeSheet.PL.WebApplication.ViewModels.Clients.ClientsViewModel
 <section class="content">
     <h2><i class="ico clients"></i>Clients</h2>
-    @Html.Partial("HeaderBoxPartial")
+    <div class="grey-box-wrap reports">
+        @Html.Partial("SearchFormPartial")
+        <a id="CreateClient" href="#new-member" class="link new-member-popup">Create new client</a>
+    </div>
     <div class="new-member-wrap">
         @Html.Partial("CreateClientDialogPartial", Model.CreateClientDialogPartialViewModel)
     </div>
     @Html.Partial("FilterLettersPartial", Model.FilterLettersPartialViewModel)
     @Html.Partial("AccordionItemsPartial", Model.AccordionItemsPartialViewModel)
-    @Html.Partial("PaginationPartial")
+    @Html.Partial("PaginationPartial", Model.PaginationPartialViewModel)
 </section>
 
 @section Scripts

@@ -11,6 +11,7 @@ namespace TimeSheet.PL.WebApplication.ViewModels.Clients
         public AccordionItemsPartialViewModel AccordionItemsPartialViewModel { get; } = new AccordionItemsPartialViewModel();
         public CreateClientDialogPartialViewModel CreateClientDialogPartialViewModel { get; } = new CreateClientDialogPartialViewModel();
         public FilterLettersPartialViewModel FilterLettersPartialViewModel { get; } = new FilterLettersPartialViewModel();
+        public PaginationPartialViewModel PaginationPartialViewModel { get; } = new PaginationPartialViewModel();
 
         public ClientsViewModel()
         {

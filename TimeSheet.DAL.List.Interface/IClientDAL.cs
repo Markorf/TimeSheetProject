@@ -13,6 +13,7 @@ namespace TimeSheet.DAL.Repositories.Repository.Interfaces
         IClient GetClientById(Guid id);
         IEnumerable<IClient> FilterClientsByName(string clientName);
         IEnumerable<IClient> FilterClientsByFirstLetter(char firstLetter);
+        IEnumerable<IClient> GetClientsByPaging(int offset, int rowsCount);
     }
 }
 
