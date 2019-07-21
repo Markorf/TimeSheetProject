@@ -5,12 +5,13 @@ namespace TimeSheet.Shared.Models.Implementation
 {
     public class Country : ICountry
     {
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         public string Name { get; set; }
-        public Country(Guid id, string name)
+
+        public Country(Guid? id, string name)
         {
 
-            if (id == Guid.Empty)
+            if (id == null || id == Guid.Empty)
             {
                 Id = Guid.NewGuid();
             }

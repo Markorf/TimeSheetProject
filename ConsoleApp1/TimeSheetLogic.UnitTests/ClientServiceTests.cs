@@ -47,7 +47,6 @@ namespace TimeSheetLogic.UnitTests
             ClientService clientService = new ClientService(_clientDAL);
             // Act
             IEnumerable<IClient> clientList = clientService.GetClients();
-            int listCount = clientList.Count();
             // Assert
             Assert.IsTrue(clientList.Count() == clientList.Count());
         }
@@ -62,7 +61,6 @@ namespace TimeSheetLogic.UnitTests
             ClientService clientService = new ClientService(_clientDAL);
             // Act
             IEnumerable<IClient> clientList = clientService.GetClientsByPaging(offset, rows);
-            int listCount = clientList.Count();
             // Assert
             Assert.IsTrue(clientList.Count() == clientList.Count());
         }

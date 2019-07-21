@@ -1,0 +1,9 @@
+C:\Users\i5\Desktop\TimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\bin\Debug\TimeSheet.DAL.Repositories.Database.Implementation.dll
+C:\Users\i5\Desktop\TimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\bin\Debug\TimeSheet.DAL.Repositories.Database.Implementation.pdb
+C:\Users\i5\Desktop\TimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.dll
+C:\Users\i5\Desktop\TimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.pdb
+C:\Users\i5\Desktop\TimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\obj\Debug\TimeSheet.DAL.Repositories.DbService.Implementation.csprojAssemblyReference.cache
+C:\Users\i5\Desktop\TimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\obj\Debug\TimeSheet.DAL.Repositories.DbService.Implementation.csproj.CoreCompileInputs.cache
+C:\Users\i5\Desktop\TimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\obj\Debug\TimeSheet.DAL.Repositories.DbService.Implementation.csproj.CopyComplete
+C:\Users\i5\Desktop\TimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\obj\Debug\TimeSheet.DAL.Repositories.Database.Implementation.dll
+C:\Users\i5\Desktop\TimeSheetProject\TimeSheet.DAL.Repositories.Database.Implementation\obj\Debug\TimeSheet.DAL.Repositories.Database.Implementation.pdb

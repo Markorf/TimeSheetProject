@@ -13,7 +13,6 @@ namespace TimeSheet.Shared.Models.Implementation
         public string ZipCode { get; set; }
         public Guid? CountryId { get; set; }
 
-        public Client() { }
 
         public Client(Guid? id, string name, string address = null, string city = null, string zipCode = null, Guid? countryId = null)
         {

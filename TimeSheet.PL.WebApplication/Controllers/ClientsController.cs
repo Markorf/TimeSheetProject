@@ -49,18 +49,24 @@ namespace TimeSheet.PL.WebApp.Controllers
                 _clientsViewModel.AccordionItemsPartialViewModel.InvalidClientId = form.Client.Id;
                 return Index();
             }
-            IClient client = new ClientViewModel(form.Client.Id, form.Client.Name, form.Client.Address, form.Client.City, form.Client.ZipCode, form.Client.CountryId);
+            IClient client = new UpdateClientViewModel(form.Client.Id, form.Client.Name, form.Client.Address, form.Client.City, form.Client.ZipCode, form.Client.CountryId);
             _clientService.UpdateClientById(client);
 
             return RedirectToAction("Index");
         }
 
-        [Route("{id}")]
+        [Route("delete/{id}")]
         [HttpGet]
         public ActionResult Delete(Guid id)
         {
-            // iskoristiti posle
-            _clientService.RemoveClientById(id);
+            
+            bool isClientRemoved = _clientService.RemoveClientById(id);
+            if (!isClientRemoved)
+            {
+                _clientsViewModel.AccordionItemsPartialViewModel.ClientFormPartialViewModel.Message =
+                    "Client is not removed";
+                return Index();
+            }
             return RedirectToAction("Index");
         }
 
@@ -74,7 +80,7 @@ namespace TimeSheet.PL.WebApp.Controllers
                 _clientsViewModel.CreateClientDialogPartialViewModel.HasValidationError = true;
                 return Index();
             }
-            IClient client = new ClientViewModel(Guid.NewGuid(), form.Client.Name, form.Client.Address, form.Client.City, form.Client.ZipCode, form.Client.CountryId);
+            IClient client = new CreateClientViewModel(Guid.NewGuid(), form.Client.Name, form.Client.Address, form.Client.City, form.Client.ZipCode, form.Client.CountryId);
             _clientService.AddClient(client);
             return RedirectToAction("Index");
         }
@@ -85,7 +91,6 @@ namespace TimeSheet.PL.WebApp.Controllers
         {
             IEnumerable<IClient> filteredList = _clientService.FilterClientsByFirstLetter(letter);
             _clientsViewModel.FilterLettersPartialViewModel.CurrentLetter = letter;
-            _clientsViewModel.FilterLettersPartialViewModel.ClientList = _clientService.GetClients();
             SetClientsToViewModel(filteredList, false);
             return Index();
         }

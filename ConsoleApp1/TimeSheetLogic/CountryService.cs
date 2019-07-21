@@ -8,7 +8,7 @@ namespace TimeSheet.BLL.Service.Implementation
 {
     public class CountryService : ICountryService
     {
-        public ICountryDAL CountryDAL { get; set; }
+        public ICountryDAL CountryDAL { get; }
 
         public CountryService(ICountryDAL countryDAL)
         {

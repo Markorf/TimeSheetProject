@@ -26,12 +26,17 @@
                 @Html.DropDownListFor(m => m.Client.CountryId, Model.Countries.Select(country => new SelectListItem() { Text = country.Name, Value = country.Id.ToString(), Selected = country.Id == Model.Client.CountryId }))
             </li>
         </ul>
-        <ul class="form last">
-            <li>
-                @Html.LabelFor(m => m.Client.City, "City: ")
-                @Html.TextBoxFor(m => m.Client.City, new { @class = "in-text" })
-            </li>
-        </ul>
+    <ul class="form last">
+        <li>
+            @Html.LabelFor(m => m.Client.City, "City: ")
+            @Html.TextBoxFor(m => m.Client.City, new { @class = "in-text" })
+        </li>
+    </ul>
+
+    if (Model.Message != null)
+     {
+        <strong>@Model.Message</strong>
+     }
         <div class="buttons">
             <div class="inner">
                 <button type="submit" class="btn green">Save</button>

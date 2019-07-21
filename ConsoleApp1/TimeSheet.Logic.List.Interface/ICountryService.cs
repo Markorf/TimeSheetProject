@@ -6,7 +6,7 @@ namespace TimeSheet.BLL.Service.Interfaces
 {
     public interface ICountryService
     {
-        ICountryDAL CountryDAL { get; set; }
+        ICountryDAL CountryDAL { get; }
         IEnumerable<ICountry> GetCountries();
     }
 }

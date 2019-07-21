@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -177,11 +178,12 @@
     <Compile Include="ViewModels\Errors\Error404ViewModel.cs" />
     <Compile Include="ViewModels\Projects\ProjectsViewModel.cs" />
     <Compile Include="ViewModels\Reports\ReportsViewModel.cs" />
-    <Compile Include="ViewModels\Shared\ClientViewModel.cs" />
+    <Compile Include="ViewModels\Shared\CreateClientViewModel.cs" />
     <Compile Include="ViewModels\Shared\Extensions\Extensions.cs" />
     <Compile Include="ViewModels\Shared\HeaderViewModel.cs" />
     <Compile Include="ViewModels\Shared\LayoutViewModel.cs" />
     <Compile Include="ViewModels\Shared\NavbarViewModel.cs" />
+    <Compile Include="ViewModels\Shared\UpdateClientViewModel.cs" />
     <Compile Include="ViewModels\Team members\TeamMembersViewModel.cs" />
     <Compile Include="ViewModels\TimeSheet\TimeSheetViewModel.cs" />
   </ItemGroup>

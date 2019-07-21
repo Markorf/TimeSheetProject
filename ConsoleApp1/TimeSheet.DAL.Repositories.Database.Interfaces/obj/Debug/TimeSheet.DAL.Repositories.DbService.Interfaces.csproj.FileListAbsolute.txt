@@ -1,0 +1,6 @@
+C:\Users\i5\Desktop\TimeSheetProject\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.dll
+C:\Users\i5\Desktop\TimeSheetProject\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\bin\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.pdb
+C:\Users\i5\Desktop\TimeSheetProject\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\obj\Debug\TimeSheet.DAL.Repositories.DbService.Interfaces.csprojAssemblyReference.cache
+C:\Users\i5\Desktop\TimeSheetProject\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\obj\Debug\TimeSheet.DAL.Repositories.DbService.Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\i5\Desktop\TimeSheetProject\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\obj\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.dll
+C:\Users\i5\Desktop\TimeSheetProject\ConsoleApp1\TimeSheet.DAL.Repositories.Database.Interfaces\obj\Debug\TimeSheet.DAL.Repositories.Database.Interfaces.pdb

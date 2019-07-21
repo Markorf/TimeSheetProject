@@ -5,27 +5,20 @@ using TimeSheet.Shared.Models.Interfaces;
 using TimeSheet.Shared.Models.Implementation;
 using TimeSheet.DAL.Repositories.DbService.Interfaces;
 using System.Data;
-using TimeSheet.DAL.Repositories.Database.Implementation;
 
 namespace TimeSheet.DAL.Repositories.Repository.Implementation
 {
     public class CountryDAL : ICountryDAL
     {
         private IDbService _DbService;
-        private DbConnectionService dbConnectionService;
 
-        public CountryDAL(IDbService DbService)
+        public CountryDAL(IDbService dbService)
         {
-            if (DbService == null)
+            if (dbService == null)
             {
-                throw new ArgumentNullException("Value cannot be null", nameof(DbService));
+                throw new ArgumentNullException("Value cannot be null", nameof(dbService));
             }
-            _DbService = DbService;
-        }
-
-        public CountryDAL(DbConnectionService dbConnectionService)
-        {
-            this.dbConnectionService = dbConnectionService;
+            _DbService = dbService;
         }
 
         public IEnumerable<ICountry> GetCountries()
